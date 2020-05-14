@@ -9,7 +9,7 @@
   <title>Java并发编程：并发容器之ConcurrentHashMap | 肆意挥洒の青春 心已远</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="JDK5中添加了新的concurrent包，相对同步容器而言，并发容器通过一些机制改进了并发性能。因为同步容器将所有对容器状态的访问都串行化了，这样保证了线程的安全性，所以这种方法的代价就是严重降低了并发性，当多个线程竞争容器时，吞吐量严重降低。因此Java5.0开始针对多线程并发访问设计，提供了并发性能较好的并发容器，引入了java.util.concurrent包。 Collections.s">
-<meta name="keywords" content="随笔,java,并发,ConcurrentHashMap">
+<meta name="keywords" content="java,并发,ConcurrentHashMap">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java并发编程：并发容器之ConcurrentHashMap">
 <meta property="og:url" content="http://blog.mathjia.net/2017/06/05/concurrentHashMap-theort/index.html">
@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://pic.yupoo.com/goldendoc/Ba4GCFe1/nuEZ0.png">
 <meta property="og:image" content="http://pic.yupoo.com/goldendoc/Ba3OfBv8/medish.jpg">
 <meta property="og:image" content="http://pic.yupoo.com/goldendoc/Ba3OfPQE/medish.jpg">
-<meta property="og:updated_time" content="2020-05-14T06:50:00.167Z">
+<meta property="og:updated_time" content="2020-05-14T07:06:09.301Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发编程：并发容器之ConcurrentHashMap">
 <meta name="twitter:description" content="JDK5中添加了新的concurrent包，相对同步容器而言，并发容器通过一些机制改进了并发性能。因为同步容器将所有对容器状态的访问都串行化了，这样保证了线程的安全性，所以这种方法的代价就是严重降低了并发性，当多个线程竞争容器时，吞吐量严重降低。因此Java5.0开始针对多线程并发访问设计，提供了并发性能较好的并发容器，引入了java.util.concurrent包。 Collections.s">
@@ -67,6 +67,8 @@
 				<li><a href="/">主页</a></li>
 	        
 				<li><a href="/tags/随笔/">随笔</a></li>
+	        
+				<li><a href="/archives">归档</a></li>
 	        
 			</ul>
 		</nav>
@@ -126,6 +128,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -143,12 +147,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/tags/随笔/">随笔</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/archives">归档</a></li>
 		        
 				</ul>
 			</nav>
@@ -299,10 +305,6 @@
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
         		</li>
@@ -596,15 +598,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">hashMap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">ClassLoader</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">hashMap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -617,6 +619,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">spring事务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">git安装</a>
               </li>
             
             <div class="clearfix"></div>
