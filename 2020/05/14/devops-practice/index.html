@@ -6,19 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://mathjia.net">
-  <title>Tag: 前端 | 肆意挥洒の青春 心已远</title>
+  <title>DevOps 实践 | 肆意挥洒の青春 心已远</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="北京工业大学12级，现就职于互联网金融保险公司，一直做Java研究开发，此为博客一枚">
-<meta name="keywords" content="前端,js,java,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,分布式,集群,高可用,Developer,Programmer,Coder,Geek">
-<meta property="og:type" content="website">
-<meta property="og:title" content="肆意挥洒の青春 心已远">
-<meta property="og:url" content="http://mathjia.net/tags/前端/index.html">
+  <meta name="description" content="1. 安装启动Docker1.1 安装docker123456789101112131415# 1、yum 包更新到最新yum update# 2、安装需要的软件包， yum-util 提供yum-config-manager功能，另外两个是devicemapper驱动依赖的yum install -y yum-utils device-mapper-persistent-data lvm2# 3">
+<meta name="keywords" content="devops,docker,jenkins,gitlab">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DevOps 实践">
+<meta property="og:url" content="http://mathjia.net/2020/05/14/devops-practice/index.html">
 <meta property="og:site_name" content="肆意挥洒の青春 心已远">
-<meta property="og:description" content="北京工业大学12级，现就职于互联网金融保险公司，一直做Java研究开发，此为博客一枚">
+<meta property="og:description" content="1. 安装启动Docker1.1 安装docker123456789101112131415# 1、yum 包更新到最新yum update# 2、安装需要的软件包， yum-util 提供yum-config-manager功能，另外两个是devicemapper驱动依赖的yum install -y yum-utils device-mapper-persistent-data lvm2# 3">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://mathjia.net/image/devops-practice/1587016456838.png">
+<meta property="og:image" content="http://mathjia.net/image/devops-practice/1587026648201.png">
+<meta property="og:image" content="http://mathjia.net/image/devops-practice/1587026690365.png">
+<meta property="og:image" content="http://mathjia.net/image/devops-practice/1587026705421.png">
+<meta property="og:updated_time" content="2020-05-14T03:23:29.295Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="肆意挥洒の青春 心已远">
-<meta name="twitter:description" content="北京工业大学12级，现就职于互联网金融保险公司，一直做Java研究开发，此为博客一枚">
+<meta name="twitter:title" content="DevOps 实践">
+<meta name="twitter:description" content="1. 安装启动Docker1.1 安装docker123456789101112131415# 1、yum 包更新到最新yum update# 2、安装需要的软件包， yum-util 提供yum-config-manager功能，另外两个是devicemapper驱动依赖的yum install -y yum-utils device-mapper-persistent-data lvm2# 3">
+<meta name="twitter:image" content="http://mathjia.net/image/devops-practice/1587016456838.png">
   
     <link rel="alternative" href="/atom.xml" title="肆意挥洒の青春 心已远" type="application/atom+xml">
   
@@ -158,64 +164,299 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-devops-practice" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/09/fornt-mcdull/" class="archive-article-date">
-  	<time datetime="2017-06-09T10:40:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-09</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/09/fornt-mcdull/">一个比较炫的前端特效，可以用来给Ta惊喜</a>
+    <h1 class="article-title" itemprop="name">
+      DevOps 实践
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/05/14/devops-practice/" class="archive-article-date">
+  	<time datetime="2020-05-14T03:17:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-安装启动Docker"><a href="#1-安装启动Docker" class="headerlink" title="1. 安装启动Docker"></a>1. 安装启动Docker</h2><h3 id="1-1-安装docker"><a href="#1-1-安装docker" class="headerlink" title="1.1 安装docker"></a>1.1 安装docker</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1、yum 包更新到最新</span></span><br><span class="line">yum update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2、安装需要的软件包， yum-util 提供yum-config-manager功能，另外两个是devicemapper驱动依赖的</span></span><br><span class="line">yum install -y yum-utils device-mapper-persistent-data lvm2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3、 设置yum源</span></span><br><span class="line">yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-</span><br><span class="line">ce.repo</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4、 安装docker，出现输入的界面都按 y</span></span><br><span class="line">yum install -y docker-ce</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5、 查看docker版本，验证是否验证成功</span></span><br><span class="line">docker -v</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-配置镜像加速器"><a href="#1-2-配置镜像加速器" class="headerlink" title="1.2 配置镜像加速器"></a>1.2 配置镜像加速器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p /etc/docker</span><br><span class="line">sudo tee /etc/docker/daemon.json &lt;&lt;-<span class="string">'EOF'</span></span><br><span class="line">&#123;</span><br><span class="line"> 	<span class="string">"registry-mirrors"</span>: [<span class="string">"https://8cqoh10g.mirror.aliyuncs.com"</span>]</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
+<h3 id="1-3-安装私有仓库"><a href="#1-3-安装私有仓库" class="headerlink" title="1.3 安装私有仓库"></a>1.3 安装私有仓库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 拉取镜像</span></span><br><span class="line">docker pull registry</span><br><span class="line"><span class="comment"># 创建容器</span></span><br><span class="line">docker run -d -p 5000:5000 registry</span><br><span class="line"><span class="comment">#配置私有仓库地址</span></span><br><span class="line">vim /etc/docker/daemon.json</span><br><span class="line">&#123;</span><br><span class="line">	<span class="string">"insecure-registries"</span>: [<span class="string">"127.0.0.1:5000"</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br><span class="line"></span><br><span class="line"><span class="comment">#启动本地仓库容器</span></span><br><span class="line">docker start 容器ID</span><br></pre></td></tr></table></figure>
+<h3 id="1-4-daemon-json文件"><a href="#1-4-daemon-json文件" class="headerlink" title="1.4 daemon.json文件"></a>1.4 daemon.json文件</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"registry-mirrors"</span>: [<span class="string">"https://8cqoh10g.mirror.aliyuncs.com"</span>],</span><br><span class="line">  <span class="attr">"insecure-registries"</span>:[<span class="string">"127.0.0.1:5000"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-5-访问私有仓库"><a href="#1-5-访问私有仓库" class="headerlink" title="1.5 访问私有仓库"></a>1.5 访问私有仓库</h3><p><a href="http://127.0.0.1:5000/v2/_catalog" target="_blank" rel="noopener">http://127.0.0.1:5000/v2/_catalog</a></p>
+<p>如果访问不到，关闭防火墙:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld</span><br></pre></td></tr></table></figure>
+<p>还访问不到，检查阿里云的安全组，端口设置</p>
+<h2 id="2-docker下gitlab安装配置使用"><a href="#2-docker下gitlab安装配置使用" class="headerlink" title="2. docker下gitlab安装配置使用"></a>2. docker下gitlab安装配置使用</h2><h3 id="2-1-安装"><a href="#2-1-安装" class="headerlink" title="2.1 安装"></a>2.1 安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查找Gitlab镜像</span></span><br><span class="line">docker search gitlab</span><br><span class="line"></span><br><span class="line"><span class="comment">#gitlab镜像拉取</span></span><br><span class="line">docker pull gitlab/gitlab-ce</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看本地镜像</span></span><br><span class="line">docker images</span><br><span class="line"></span><br><span class="line"><span class="comment">#本机建立的3个目录</span></span><br><span class="line"><span class="comment">#为了gitlab容器通过挂载本机目录启动后可以映射到本机，然后后续就可以直接在本机查看和编辑了，不用再进容器操作</span></span><br><span class="line"><span class="comment">#配置文件</span></span><br><span class="line">mkdir -p /home/gitlab/etc</span><br><span class="line"><span class="comment">#数据文件</span></span><br><span class="line">mkdir -p /home/gitlab/data</span><br><span class="line"><span class="comment">#日志文件</span></span><br><span class="line">mkdir -p /home/gitlab/logs</span><br><span class="line"></span><br><span class="line"><span class="comment">#启动容器</span></span><br><span class="line">docker run --name=<span class="string">'gitlab'</span> -d \</span><br><span class="line">	--publish 4443:443 --publish 8888:80 \</span><br><span class="line">	-v /home/gitlab/etc:/etc/gitlab \</span><br><span class="line">	-v /home/gitlab/data:/var/opt/gitlab \</span><br><span class="line">	-v /home/gitlab/logs:/var/<span class="built_in">log</span>/gitlab \</span><br><span class="line">	gitlab/gitlab-ce:latest</span><br><span class="line"><span class="comment">#查看启动日志</span></span><br><span class="line">docker logs -f gitlab</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-配置"><a href="#2-2-配置" class="headerlink" title="2.2 配置"></a>2.2 配置</h3><blockquote>
+<p>按上面的方式，gitlab容器运行没问题，但在gitlab上创建项目的时候，生成项目的URL访问地址<br>是按容器的hostname来生成的，也就是容器的id。作为gitlab服务器，我们需要一个固定的URL<br>访问地址，于是需要配置gitlab.rb（宿主机路径：/home/gitlab/etc/gitlab.rb）</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#配置域名或IP</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#配置gitlab.rb</span></span><br><span class="line"><span class="built_in">cd</span> /home/gitlab/etc</span><br><span class="line">vim gitlab.rb</span><br><span class="line"></span><br><span class="line"><span class="comment">#配置http协议所使用的访问地址,不加端口号默认为80</span></span><br><span class="line"><span class="comment"># 加端口: 127.0.0.1:8888, 需要配置 nginx['listen_port'] = 80</span></span><br><span class="line">external_url <span class="string">'http://127.0.0.1'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#配置gitlab.yml</span></span><br><span class="line"><span class="built_in">cd</span> /home/gitlab/data/gitlab-rails/etc</span><br><span class="line">vim gitlab.yml</span><br><span class="line"></span><br><span class="line">gitlab:</span><br><span class="line">  	<span class="comment">## Web server settings (note: host is the FQDN, do not include http://)</span></span><br><span class="line"> 	host: 127.0.0.1</span><br><span class="line"> 	port: 8888</span><br><span class="line"> 	https: <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-3-初始化密码"><a href="#2-3-初始化密码" class="headerlink" title="2.3 初始化密码"></a>2.3 初始化密码</h3><p>gitlab 默认管理用户是root<br>登录：<a href="http://127.0.0.1:8888登录修改root" target="_blank" rel="noopener">http://127.0.0.1:8888登录修改root</a> 的密码</p>
+<p><img src="/image/devops-practice/1587016456838.png" alt="初始化"></p>
+<h3 id="2-4-登录"><a href="#2-4-登录" class="headerlink" title="2.4 登录"></a>2.4 登录</h3><p>用户名 root 密码</p>
+<h3 id="2-5-创建项目"><a href="#2-5-创建项目" class="headerlink" title="2.5 创建项目"></a>2.5 创建项目</h3><p>http-demo</p>
+<h2 id="3-安装Git"><a href="#3-安装Git" class="headerlink" title="3. 安装Git"></a>3. 安装Git</h2><p><a href="http://allen001.github.io/2020/05/14/centos7-git/" target="_blank" rel="noopener">参考另一篇文章</a></p>
+<h2 id="4-使用Git管理项目"><a href="#4-使用Git管理项目" class="headerlink" title="4. 使用Git管理项目"></a>4. 使用Git管理项目</h2><h3 id="4-1使用idea从gitlab检出空项目"><a href="#4-1使用idea从gitlab检出空项目" class="headerlink" title="4.1使用idea从gitlab检出空项目"></a>4.1使用idea从gitlab检出空项目</h3><p>项目地址：<a href="http://127.0.0.1:8888/hello-demo" target="_blank" rel="noopener">http://127.0.0.1:8888/hello-demo</a></p>
+<h3 id="4-2-复制项目并允许"><a href="#4-2-复制项目并允许" class="headerlink" title="4.2 复制项目并允许"></a>4.2 复制项目并允许</h3><p>idea中运行项目并访问：<a href="http://127.0.0.1:10000/user/1" target="_blank" rel="noopener">http://127.0.0.1:10000/user/1</a></p>
+<h3 id="4-3-提交代码到GitLab"><a href="#4-3-提交代码到GitLab" class="headerlink" title="4.3 提交代码到GitLab"></a>4.3 提交代码到GitLab</h3><p>在工程根目录创建 .gitignore，此文件中记录了在提交代码时哪些文件或目录被忽略</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.idea/</span><br><span class="line">target/</span><br><span class="line">*.iml</span><br></pre></td></tr></table></figure>
+<h2 id="5-springboot工程制作镜像"><a href="#5-springboot工程制作镜像" class="headerlink" title="5. springboot工程制作镜像"></a>5. springboot工程制作镜像</h2><h3 id="5-1SpringBoot运行Jar包"><a href="#5-1SpringBoot运行Jar包" class="headerlink" title="5.1SpringBoot运行Jar包"></a>5.1SpringBoot运行Jar包</h3><ul>
+<li>使用maven的打包插件</li>
+</ul>
+<blockquote>
+<p>将下边的插件依赖拷贝到微服务工程中</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用maven打包并运行访问微服务工程</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar http-demo-1.0-SNAPSHOT.jar</span><br></pre></td></tr></table></figure>
+<h3 id="5-2-创建Docker镜像"><a href="#5-2-创建Docker镜像" class="headerlink" title="5.2 创建Docker镜像"></a>5.2 创建Docker镜像</h3><p>在linux上新建一个目录，将上一步的jar包拷贝到Linux服务器，准备创建镜像</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /home</span><br><span class="line"></span><br><span class="line">mkdir demo</span><br></pre></td></tr></table></figure>
+<p>测试jar包是否可以运行，执行：<code>java -jar</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar http-demo-1.0-SNAPSHOT.jar</span><br></pre></td></tr></table></figure>
+<p>访问：<a href="http://127.0.0.1:10000/user/1" target="_blank" rel="noopener">http://127.0.0.1:10000/user/1</a></p>
+<p>在hello-demo-1.0-SNAPSHOT.jar所在文件夹位置编写Dockerfile文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">vim Dockerfile</span><br><span class="line"></span><br><span class="line">FROM java:8</span><br><span class="line"><span class="comment"># VOLUME 指定了临时文件目录为/tmp。</span></span><br><span class="line"><span class="comment"># 其效果是在主机 /var/lib/docker 目录下创建了一个临时文件，并链接到容器的/tmp</span></span><br><span class="line">VOLUME /tmp</span><br><span class="line"><span class="comment"># 将jar包添加到容器中并更名为app.jar</span></span><br><span class="line">ADD hello-demo-1.0-SNAPSHOT.jar app.jar</span><br><span class="line"><span class="comment"># 运行jar包</span></span><br><span class="line">RUN bash -c <span class="string">'touch /app.jar'</span></span><br><span class="line">ENTRYPOINT [<span class="string">"java"</span>,<span class="string">"-Djava.security.egd=file:/dev/./urandom"</span>,<span class="string">"-jar"</span>,<span class="string">"/app.jar"</span>]</span><br></pre></td></tr></table></figure>
+<p>在Dockerfile文件所在目录创建镜像</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t http-demo:1.0-SNAPSHOT .</span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong>最后面有个 <code>点</code></p>
+<p>查看镜像</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+<h3 id="5-3-创建启动容器"><a href="#5-3-创建启动容器" class="headerlink" title="5.3 创建启动容器"></a>5.3 创建启动容器</h3><p>基于hello-demo:1.0-SNAPSHOT镜像创建容器，容器名称为hello-demo</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 10000:10000 hello-demo:1.0-SNAPSHOT</span><br></pre></td></tr></table></figure>
+<p>容器创建成功，可通过<code>docker ps -a</code>命令查看</p>
+<h3 id="5-4-访问页面"><a href="#5-4-访问页面" class="headerlink" title="5.4 访问页面"></a>5.4 访问页面</h3><p>访问：<a href="http://127.0.0.1:10000/user/1" target="_blank" rel="noopener">http://127.0.0.1:10000/user/1</a></p>
+<h3 id="5-5-停止与删除"><a href="#5-5-停止与删除" class="headerlink" title="5.5 停止与删除"></a>5.5 停止与删除</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker stop 容器Id</span><br><span class="line">docker rm 容器Id</span><br><span class="line">docker rmi 镜像Id</span><br></pre></td></tr></table></figure>
+<h3 id="5-6-使用maven构建镜像"><a href="#5-6-使用maven构建镜像" class="headerlink" title="5.6 使用maven构建镜像"></a>5.6 使用maven构建镜像</h3><p>上边构建的过程是通过手工一步一步完成，maven提供docker-maven-plugin插件可完成从打包到构建<br>镜像、构建容器等过程。</p>
+<h4 id="5-6-1-编写pom-docker-xml"><a href="#5-6-1-编写pom-docker-xml" class="headerlink" title="5.6.1 编写pom_docker.xml"></a>5.6.1 编写pom_docker.xml</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.1.3.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">relativePath</span>/&gt;</span> <span class="comment">&lt;!-- lookup parent from repository --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.math.demo<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hello-demo<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>hello-demo<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">description</span>&gt;</span>Demo project for Spring Boot<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">java.version</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">java.version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.junit.vintage<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit-vintage-engine<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line"></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.spotify<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>docker-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!--docker镜像相关的配置信息--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!--镜像名，这里用工程名--&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">imageName</span>&gt;</span>$&#123;project.artifactId&#125;<span class="tag">&lt;/<span class="name">imageName</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!--Dockerfile文件所在目录--&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">dockerDirectory</span>&gt;</span>$&#123;project.basedir&#125;/src/main/resources<span class="tag">&lt;/<span class="name">dockerDirectory</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!--TAG,这里用工程版本号--&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">imageTags</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">imageTag</span>&gt;</span>$&#123;project.version&#125;<span class="tag">&lt;/<span class="name">imageTag</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">imageTags</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!--构建镜像的配置信息--&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">targetPath</span>&gt;</span>/<span class="tag">&lt;/<span class="name">targetPath</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">directory</span>&gt;</span>$&#123;project.build.directory&#125;<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">include</span>&gt;</span>$&#123;project.artifactId&#125;-$&#123;project.version&#125;.jar<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="5-6-2-拷贝Dockerfile文件"><a href="#5-6-2-拷贝Dockerfile文件" class="headerlink" title="5.6.2 拷贝Dockerfile文件"></a>5.6.2 拷贝Dockerfile文件</h4><h4 id="5-6-3-在IDEA中提交修改的文件"><a href="#5-6-3-在IDEA中提交修改的文件" class="headerlink" title="5.6.3 在IDEA中提交修改的文件"></a>5.6.3 在IDEA中提交修改的文件</h4><h4 id="5-6-4-clone最新项目"><a href="#5-6-4-clone最新项目" class="headerlink" title="5.6.4 clone最新项目"></a>5.6.4 clone最新项目</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> http://127.0.0.1:8888/root/hello-demo.git</span><br></pre></td></tr></table></figure>
+<h4 id="5-6-5-打包构建镜像"><a href="#5-6-5-打包构建镜像" class="headerlink" title="5.6.5 打包构建镜像"></a>5.6.5 打包构建镜像</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#进入工程目录</span></span><br><span class="line"><span class="built_in">cd</span> http-demo</span><br><span class="line"></span><br><span class="line"><span class="comment">#打包构建镜像</span></span><br><span class="line">mvn -f pom_docker.xml clean package -DskipTests docker:build</span><br></pre></td></tr></table></figure>
+<h4 id="5-6-6创建启动容器"><a href="#5-6-6创建启动容器" class="headerlink" title="5.6.6创建启动容器"></a>5.6.6创建启动容器</h4><p>基于hello-demo:1.0-SNAPSHOT镜像创建容器，容器名称为hello-demo</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 10000:10000 hello-demo:1.0-SNAPSHOT</span><br></pre></td></tr></table></figure>
+<p>容器创建成功，可通过<code>docker ps -a</code>命令查看</p>
+<h4 id="5-6-7-访问页面"><a href="#5-6-7-访问页面" class="headerlink" title="5.6.7 访问页面"></a>5.6.7 访问页面</h4><p>访问：<a href="http://127.0.0.1:10000/user/1" target="_blank" rel="noopener">http://127.0.0.1:10000/user/1</a></p>
+<h2 id="6-Jenkins安装配置使用"><a href="#6-Jenkins安装配置使用" class="headerlink" title="6. Jenkins安装配置使用"></a>6. Jenkins安装配置使用</h2><h3 id="6-1-安装"><a href="#6-1-安装" class="headerlink" title="6.1 安装"></a>6.1 安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#搜索镜像</span></span><br><span class="line">docker search jenkins</span><br><span class="line"></span><br><span class="line"><span class="comment">#拉取镜像</span></span><br><span class="line">docker pull jenkins/jenkins:lts</span><br><span class="line"></span><br><span class="line"><span class="comment">#创建容器 </span></span><br><span class="line">docker run --name=jenkins \</span><br><span class="line"> -u root \</span><br><span class="line"> -d \</span><br><span class="line"> -p 8024:8080 \</span><br><span class="line"> -p 50000:50000 \</span><br><span class="line"> -v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line"> -v /usr/bin/docker:/usr/bin/docker \</span><br><span class="line"> -v /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.242.b08-0.el7_7.x86_64:/usr/java/jdk1.8.0_181 \</span><br><span class="line"> -v /usr/<span class="built_in">local</span>/maven3:/usr/<span class="built_in">local</span>/maven \</span><br><span class="line"> -v /usr/<span class="built_in">local</span>/maven_repository:/usr/<span class="built_in">local</span>/maven_repository \</span><br><span class="line"> -v /usr/<span class="built_in">local</span>/git:/usr/<span class="built_in">local</span>/git \</span><br><span class="line"> -v /usr/share/javazi-1.8:/usr/share/javazi-1.8 \</span><br><span class="line"> -v /home/jenkins-data:/var/jenkins_home \</span><br><span class="line"> jenkins/jenkins:lts</span><br><span class="line"> </span><br><span class="line"> <span class="comment"># 注：如果不加 -v /usr/share/javazi-1.8:/usr/share/javazi-1.8，jenkins编译允许会报找不到/usr/java/jdk1.8.0_181/jre/lib/tzdb.dat 文件</span></span><br></pre></td></tr></table></figure>
+<h3 id="6-2-解锁Jenkins"><a href="#6-2-解锁Jenkins" class="headerlink" title="6.2 解锁Jenkins"></a>6.2 解锁Jenkins</h3><p><a href="http://127.0.0.1:8024/" target="_blank" rel="noopener">http://127.0.0.1:8024/</a> 首次登录需要，解锁Jenkins</p>
+<p><img src="/image/devops-practice/1587026648201.png" alt="解锁Jenkins"></p>
+<p>进入容器内部docker exec -it jenkins bash</p>
+<p>执行：cat /var/jenkins_home/secrets/initialAdminPassword，得到密码并粘贴过去</p>
+<p><img src="/image/devops-practice/1587026690365.png" alt="Jenkins"></p>
+<h3 id="6-3-登录"><a href="#6-3-登录" class="headerlink" title="6.3 登录"></a>6.3 登录</h3><p><img src="/image/devops-practice/1587026705421.png" alt="登录"></p>
+<h2 id="7-持续集成"><a href="#7-持续集成" class="headerlink" title="7. 持续集成"></a>7. 持续集成</h2><h3 id="7-1-编写pom-xml"><a href="#7-1-编写pom-xml" class="headerlink" title="7.1 编写pom.xml"></a>7.1 编写pom.xml</h3><p>使用Jenkins进行构建，在hello-demo工程根目录编写pom_docker_registry.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.1.3.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">relativePath</span>/&gt;</span> <span class="comment">&lt;!-- lookup parent from repository --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.math.demo<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hello-demo<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>hello-demo<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">description</span>&gt;</span>Demo project for Spring Boot<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">java.version</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">java.version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.junit.vintage<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit-vintage-engine<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line"></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.spotify<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>docker-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!--docker镜像相关的配置信息--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!--镜像名，这里用工程名--&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">imageName</span>&gt;</span>$&#123;project.artifactId&#125;<span class="tag">&lt;/<span class="name">imageName</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!--Dockerfile文件所在目录--&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">dockerDirectory</span>&gt;</span>$&#123;project.basedir&#125;/src/main/resources<span class="tag">&lt;/<span class="name">dockerDirectory</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!--TAG,这里用工程版本号--&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">imageTags</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">imageTag</span>&gt;</span>$&#123;project.version&#125;<span class="tag">&lt;/<span class="name">imageTag</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">imageTags</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">registryUrl</span>&gt;</span>127.0.0.1:5000<span class="tag">&lt;/<span class="name">registryUrl</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">pushImage</span>&gt;</span>true<span class="tag">&lt;/<span class="name">pushImage</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">imageName</span>&gt;</span>127.0.0.1:5000/$&#123;project.artifactId&#125;<span class="tag">&lt;/<span class="name">imageName</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!--构建镜像的配置信息--&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">targetPath</span>&gt;</span>/<span class="tag">&lt;/<span class="name">targetPath</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">directory</span>&gt;</span>$&#123;project.build.directory&#125;<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">include</span>&gt;</span>$&#123;project.artifactId&#125;-$&#123;project.version&#125;.jar<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>提交 gitlab仓库</strong></p>
+<h3 id="7-2-创建持续集成任务"><a href="#7-2-创建持续集成任务" class="headerlink" title="7.2 创建持续集成任务"></a>7.2 创建持续集成任务</h3><h4 id="7-2-1-创建构建任务"><a href="#7-2-1-创建构建任务" class="headerlink" title="7.2.1 创建构建任务"></a>7.2.1 创建构建任务</h4><p>hello-demo</p>
+<h4 id="7-2-2-配置git仓库"><a href="#7-2-2-配置git仓库" class="headerlink" title="7.2.2 配置git仓库"></a>7.2.2 配置git仓库</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Repository URL： http://192.168.200.133:8888/root/hello-demo.git</span><br></pre></td></tr></table></figure>
+<h4 id="7-2-3-maven构建配置"><a href="#7-2-3-maven构建配置" class="headerlink" title="7.2.3 maven构建配置"></a>7.2.3 maven构建配置</h4><ul>
+<li>使用shell脚本停止容器、删除容器、删除镜像,shell脚本如下：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">result=$(docker ps | grep <span class="string">"127.0.0.1:5000/hello-demo"</span>)</span><br><span class="line"><span class="keyword">if</span> [[ <span class="string">"<span class="variable">$result</span>"</span> != <span class="string">""</span> ]]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"stop hello-demo"</span></span><br><span class="line">docker stop hello-demo</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line">result1=$(docker ps -a | grep <span class="string">"127.0.0.1:5000/hello-demo"</span>)</span><br><span class="line"><span class="keyword">if</span> [[ <span class="string">"<span class="variable">$result1</span>"</span> != <span class="string">""</span> ]]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"rm http-demo"</span></span><br><span class="line">docker rm hello-demo</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line">result2=$(docker images | grep <span class="string">"127.0.0.1:5000/http-demo"</span>)</span><br><span class="line"><span class="keyword">if</span> [[ <span class="string">"<span class="variable">$result2</span>"</span> != <span class="string">""</span> ]]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"127.0.0.1:5000/hello-demo:1.0-SNAPSHOT"</span></span><br><span class="line">docker rmi 127.0.0.1:5000/http-demo:1.0-SNAPSHOT</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>执行maven构建</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clean package -f pom_docker_registry.xml  -DskipTests docker:build</span><br></pre></td></tr></table></figure>
+<ul>
+<li>拉取镜像，创建容器，启动容器</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name http-demo -p 10000:10000 -idt 127.0.0.1:5000/hello-demo:1.0-SNAPSHOT</span><br></pre></td></tr></table></figure>
+<h3 id="7-3-自动构建"><a href="#7-3-自动构建" class="headerlink" title="7.3 自动构建"></a>7.3 自动构建</h3>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/image/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/image/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">devops</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">jenkins</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">gitlab</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://mathjia.net/2020/05/14/devops-practice/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/05/14/centos7-git/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Centos7安装Git</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-安装启动Docker"><span class="toc-number">1.</span> <span class="toc-text">1. 安装启动Docker</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-安装docker"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 安装docker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-配置镜像加速器"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 配置镜像加速器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-安装私有仓库"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 安装私有仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-daemon-json文件"><span class="toc-number">1.4.</span> <span class="toc-text">1.4 daemon.json文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-访问私有仓库"><span class="toc-number">1.5.</span> <span class="toc-text">1.5 访问私有仓库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-docker下gitlab安装配置使用"><span class="toc-number">2.</span> <span class="toc-text">2. docker下gitlab安装配置使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-安装"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-配置"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-初始化密码"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 初始化密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-登录"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-创建项目"><span class="toc-number">2.5.</span> <span class="toc-text">2.5 创建项目</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-安装Git"><span class="toc-number">3.</span> <span class="toc-text">3. 安装Git</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-使用Git管理项目"><span class="toc-number">4.</span> <span class="toc-text">4. 使用Git管理项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1使用idea从gitlab检出空项目"><span class="toc-number">4.1.</span> <span class="toc-text">4.1使用idea从gitlab检出空项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-复制项目并允许"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 复制项目并允许</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-提交代码到GitLab"><span class="toc-number">4.3.</span> <span class="toc-text">4.3 提交代码到GitLab</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-springboot工程制作镜像"><span class="toc-number">5.</span> <span class="toc-text">5. springboot工程制作镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1SpringBoot运行Jar包"><span class="toc-number">5.1.</span> <span class="toc-text">5.1SpringBoot运行Jar包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-创建Docker镜像"><span class="toc-number">5.2.</span> <span class="toc-text">5.2 创建Docker镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-创建启动容器"><span class="toc-number">5.3.</span> <span class="toc-text">5.3 创建启动容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-访问页面"><span class="toc-number">5.4.</span> <span class="toc-text">5.4 访问页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-停止与删除"><span class="toc-number">5.5.</span> <span class="toc-text">5.5 停止与删除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-6-使用maven构建镜像"><span class="toc-number">5.6.</span> <span class="toc-text">5.6 使用maven构建镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-6-1-编写pom-docker-xml"><span class="toc-number">5.6.1.</span> <span class="toc-text">5.6.1 编写pom_docker.xml</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-6-2-拷贝Dockerfile文件"><span class="toc-number">5.6.2.</span> <span class="toc-text">5.6.2 拷贝Dockerfile文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-6-3-在IDEA中提交修改的文件"><span class="toc-number">5.6.3.</span> <span class="toc-text">5.6.3 在IDEA中提交修改的文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-6-4-clone最新项目"><span class="toc-number">5.6.4.</span> <span class="toc-text">5.6.4 clone最新项目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-6-5-打包构建镜像"><span class="toc-number">5.6.5.</span> <span class="toc-text">5.6.5 打包构建镜像</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-6-6创建启动容器"><span class="toc-number">5.6.6.</span> <span class="toc-text">5.6.6创建启动容器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-6-7-访问页面"><span class="toc-number">5.6.7.</span> <span class="toc-text">5.6.7 访问页面</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Jenkins安装配置使用"><span class="toc-number">6.</span> <span class="toc-text">6. Jenkins安装配置使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-安装"><span class="toc-number">6.1.</span> <span class="toc-text">6.1 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-解锁Jenkins"><span class="toc-number">6.2.</span> <span class="toc-text">6.2 解锁Jenkins</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-登录"><span class="toc-number">6.3.</span> <span class="toc-text">6.3 登录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-持续集成"><span class="toc-number">7.</span> <span class="toc-text">7. 持续集成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-编写pom-xml"><span class="toc-number">7.1.</span> <span class="toc-text">7.1 编写pom.xml</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-创建持续集成任务"><span class="toc-number">7.2.</span> <span class="toc-text">7.2 创建持续集成任务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#7-2-1-创建构建任务"><span class="toc-number">7.2.1.</span> <span class="toc-text">7.2.1 创建构建任务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-2-2-配置git仓库"><span class="toc-number">7.2.2.</span> <span class="toc-text">7.2.2 配置git仓库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-2-3-maven构建配置"><span class="toc-number">7.2.3.</span> <span class="toc-text">7.2.3 maven构建配置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3-自动构建"><span class="toc-number">7.3.</span> <span class="toc-text">7.3 自动构建</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://mathjia.net/2020/05/14/devops-practice/",
+  owner: 'allen001',
+  repo: 'allen001.github.io',
+  oauth: {
+    client_id: '080a2bdfca9ab9e6e4d9',
+    client_secret: 'af9c3f80184daf383e75e0085402b150f27164a6',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -238,9 +479,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
