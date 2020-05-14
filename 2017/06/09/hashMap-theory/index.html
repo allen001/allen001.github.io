@@ -435,9 +435,10 @@
   <div id="gitment-ctn"></div> 
 <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
 <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://github.com/blueimp/JavaScript-MD5/blob/master/js/md5.min.js"></script>
 <script>
 var gitalk = new Gitalk({
-  id: 'http://blog.mathjia.net/2017/06/09/hashMap-theory/',
+  id: md5(location.pathname),
   clientID: '2360b29b462f37a66d43',
   clientSecret: '02475a757ede4af430aaa33eeef99c652d4ab1da',
   repo: 'allen001.github.io',
@@ -584,10 +585,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">hashMap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">devops</a>
               </li>
              
@@ -601,6 +598,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">hashMap</a>
               </li>
              
               <li class="article-tag-list-item">
