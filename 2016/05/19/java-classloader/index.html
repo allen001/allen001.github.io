@@ -5,34 +5,34 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="dns-prefetch" href="http://mathjia.net">
+  <link rel="dns-prefetch" href="http://www.mathjia.net">
   <title>Java ClassLoader 分析整理 | 肆意挥洒の青春 心已远</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="什么是CLassLoader大家都知道，当我们写好一个Java程序之后，不是管是CS还是BS应用，都是由若干个.class文件组织而成的一个完整的Java应用程序，当程序在运行时，即会调用该程序的一个入口函数来调用系统的相关功能，而这些功能都被封装在不同的class文件当中，所以经常要从这个class文件中要调用另外一个class文件中的方法，如果另外一个文件不存在的，则会引发系统异常。而程序在启">
 <meta name="keywords" content="Java,随笔,ClassLoader,JVM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java ClassLoader 分析整理">
-<meta property="og:url" content="http://mathjia.net/2016/05/19/java-classloader/index.html">
+<meta property="og:url" content="http://www.mathjia.net/2016/05/19/java-classloader/index.html">
 <meta property="og:site_name" content="肆意挥洒の青春 心已远">
 <meta property="og:description" content="什么是CLassLoader大家都知道，当我们写好一个Java程序之后，不是管是CS还是BS应用，都是由若干个.class文件组织而成的一个完整的Java应用程序，当程序在运行时，即会调用该程序的一个入口函数来调用系统的相关功能，而这些功能都被封装在不同的class文件当中，所以经常要从这个class文件中要调用另外一个class文件中的方法，如果另外一个文件不存在的，则会引发系统异常。而程序在启">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://mathjia.net/image/java-classloader/40f5888b67c748df7efba008e7c2f9d2.jpg">
-<meta property="og:image" content="http://mathjia.net/image/java-classloader/7c47cc427c8e826ebea320219ce81394.png">
-<meta property="og:image" content="http://mathjia.net/image/java-classloader/771409a8fb1543788fe7d91f1ea0987f.jpg">
-<meta property="og:image" content="http://mathjia.net/image/java-classloader/1a1f289428bd7ab3beb8a89d4c90b22f.jpg">
-<meta property="og:image" content="http://mathjia.net/image/java-classloader/eb4fe264c10eb7a528b047aa983a4829.jpg">
-<meta property="og:image" content="http://mathjia.net/image/java-classloader/cb67c3ae286e9140355eb56d2c33ff5b.jpg">
-<meta property="og:image" content="http://mathjia.net/image/java-classloader/63d9b90d9808e4ddc24c2331ddd6775d.jpg">
-<meta property="og:image" content="http://mathjia.net/image/java-classloader/deb77b7fcd6ee6af0b2c992355eaeea9.jpg">
-<meta property="og:image" content="http://mathjia.net/image/java-classloader/ca7724498403de38829ae36fc9149b75.jpg">
-<meta property="og:image" content="http://mathjia.net/image/java-classloader/bfd92386a1b48076792e68b596846499.jpg">
-<meta property="og:image" content="http://mathjia.net/image/java-classloader/bdc2d12f90867717d1bbc5bc01bb614f.jpg">
-<meta property="og:image" content="http://mathjia.net/image/java-classloader/e1aaef260db7f48558149ce9b0c2c3d8.jpg">
+<meta property="og:image" content="http://www.mathjia.net/image/java-classloader/40f5888b67c748df7efba008e7c2f9d2.jpg">
+<meta property="og:image" content="http://www.mathjia.net/image/java-classloader/7c47cc427c8e826ebea320219ce81394.png">
+<meta property="og:image" content="http://www.mathjia.net/image/java-classloader/771409a8fb1543788fe7d91f1ea0987f.jpg">
+<meta property="og:image" content="http://www.mathjia.net/image/java-classloader/1a1f289428bd7ab3beb8a89d4c90b22f.jpg">
+<meta property="og:image" content="http://www.mathjia.net/image/java-classloader/eb4fe264c10eb7a528b047aa983a4829.jpg">
+<meta property="og:image" content="http://www.mathjia.net/image/java-classloader/cb67c3ae286e9140355eb56d2c33ff5b.jpg">
+<meta property="og:image" content="http://www.mathjia.net/image/java-classloader/63d9b90d9808e4ddc24c2331ddd6775d.jpg">
+<meta property="og:image" content="http://www.mathjia.net/image/java-classloader/deb77b7fcd6ee6af0b2c992355eaeea9.jpg">
+<meta property="og:image" content="http://www.mathjia.net/image/java-classloader/ca7724498403de38829ae36fc9149b75.jpg">
+<meta property="og:image" content="http://www.mathjia.net/image/java-classloader/bfd92386a1b48076792e68b596846499.jpg">
+<meta property="og:image" content="http://www.mathjia.net/image/java-classloader/bdc2d12f90867717d1bbc5bc01bb614f.jpg">
+<meta property="og:image" content="http://www.mathjia.net/image/java-classloader/e1aaef260db7f48558149ce9b0c2c3d8.jpg">
 <meta property="og:updated_time" content="2020-05-14T02:33:43.274Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java ClassLoader 分析整理">
 <meta name="twitter:description" content="什么是CLassLoader大家都知道，当我们写好一个Java程序之后，不是管是CS还是BS应用，都是由若干个.class文件组织而成的一个完整的Java应用程序，当程序在运行时，即会调用该程序的一个入口函数来调用系统的相关功能，而这些功能都被封装在不同的class文件当中，所以经常要从这个class文件中要调用另外一个class文件中的方法，如果另外一个文件不存在的，则会引发系统异常。而程序在启">
-<meta name="twitter:image" content="http://mathjia.net/image/java-classloader/40f5888b67c748df7efba008e7c2f9d2.jpg">
+<meta name="twitter:image" content="http://www.mathjia.net/image/java-classloader/40f5888b67c748df7efba008e7c2f9d2.jpg">
   
     <link rel="alternative" href="/atom.xml" title="肆意挥洒の青春 心已远" type="application/atom+xml">
   
@@ -407,7 +407,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://mathjia.net/2016/05/19/java-classloader/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://www.mathjia.net/2016/05/19/java-classloader/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -466,12 +466,12 @@
 <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://mathjia.net/2016/05/19/java-classloader/",
+  id: "http://www.mathjia.net/2016/05/19/java-classloader/",
   owner: 'allen001',
   repo: 'allen001.github.io',
   oauth: {
-    client_id: '080a2bdfca9ab9e6e4d9',
-    client_secret: 'af9c3f80184daf383e75e0085402b150f27164a6',
+    client_id: '2360b29b462f37a66d43',
+    client_secret: '02475a757ede4af430aaa33eeef99c652d4ab1da',
   },
 })
 gitment.render('gitment-ctn')
