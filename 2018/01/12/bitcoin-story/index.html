@@ -5,39 +5,39 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="dns-prefetch" href="http://www.mathjia.net">
+  <link rel="dns-prefetch" href="http://blog.mathjia.net">
   <title>区块链：一个故事告诉你比特币的原理及运作机制 | 肆意挥洒の青春 心已远</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="周末花时间看了一些比特币原理相关的资料，虽然不敢说把每个细节都完全搞懂了，不过整体思路和关键部分的主要原理还是比较明白。写一篇文章分享给大家。这篇文章的定位会比较科普，尽量用类比的方法将比特币的基本原理讲出来。这篇文章不会涉及算法和协议中比较细节的部分，打算后面会再写一篇程序员视角下的比特币原理，那里会从技术人员的视角对比特币系统中较为关键的数据结构、算法和协议进行一些讲解。 在这篇文章中我会给出">
 <meta name="keywords" content="随笔,区块链,比特币">
 <meta property="og:type" content="article">
 <meta property="og:title" content="区块链：一个故事告诉你比特币的原理及运作机制">
-<meta property="og:url" content="http://www.mathjia.net/2018/01/12/bitcoin-story/index.html">
+<meta property="og:url" content="http://blog.mathjia.net/2018/01/12/bitcoin-story/index.html">
 <meta property="og:site_name" content="肆意挥洒の青春 心已远">
 <meta property="og:description" content="周末花时间看了一些比特币原理相关的资料，虽然不敢说把每个细节都完全搞懂了，不过整体思路和关键部分的主要原理还是比较明白。写一篇文章分享给大家。这篇文章的定位会比较科普，尽量用类比的方法将比特币的基本原理讲出来。这篇文章不会涉及算法和协议中比较细节的部分，打算后面会再写一篇程序员视角下的比特币原理，那里会从技术人员的视角对比特币系统中较为关键的数据结构、算法和协议进行一些讲解。 在这篇文章中我会给出">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://www.mathjia.net/image/bitchion/01.png">
-<meta property="og:image" content="http://www.mathjia.net/image/bitchion/02.png">
-<meta property="og:image" content="http://www.mathjia.net/image/bitchion/03.png">
-<meta property="og:image" content="http://www.mathjia.net/image/bitchion/04.png">
-<meta property="og:image" content="http://www.mathjia.net/image/bitchion/05.png">
-<meta property="og:image" content="http://www.mathjia.net/image/bitchion/06.png">
-<meta property="og:image" content="http://www.mathjia.net/image/bitchion/07.png">
-<meta property="og:image" content="http://www.mathjia.net/image/bitchion/08.png">
-<meta property="og:image" content="http://www.mathjia.net/image/bitchion/09.png">
-<meta property="og:image" content="http://www.mathjia.net/image/bitchion/10.png">
-<meta property="og:image" content="http://www.mathjia.net/image/bitchion/11.png">
-<meta property="og:image" content="http://www.mathjia.net/image/bitchion/12.png">
-<meta property="og:image" content="http://www.mathjia.net/image/bitchion/13.png">
-<meta property="og:image" content="http://www.mathjia.net/image/bitchion/14.png">
-<meta property="og:image" content="http://www.mathjia.net/image/bitchion/15.png">
-<meta property="og:image" content="http://www.mathjia.net/image/bitchion/16.png">
-<meta property="og:image" content="http://www.mathjia.net/image/bitchion/17.png">
+<meta property="og:image" content="http://blog.mathjia.net/image/bitchion/01.png">
+<meta property="og:image" content="http://blog.mathjia.net/image/bitchion/02.png">
+<meta property="og:image" content="http://blog.mathjia.net/image/bitchion/03.png">
+<meta property="og:image" content="http://blog.mathjia.net/image/bitchion/04.png">
+<meta property="og:image" content="http://blog.mathjia.net/image/bitchion/05.png">
+<meta property="og:image" content="http://blog.mathjia.net/image/bitchion/06.png">
+<meta property="og:image" content="http://blog.mathjia.net/image/bitchion/07.png">
+<meta property="og:image" content="http://blog.mathjia.net/image/bitchion/08.png">
+<meta property="og:image" content="http://blog.mathjia.net/image/bitchion/09.png">
+<meta property="og:image" content="http://blog.mathjia.net/image/bitchion/10.png">
+<meta property="og:image" content="http://blog.mathjia.net/image/bitchion/11.png">
+<meta property="og:image" content="http://blog.mathjia.net/image/bitchion/12.png">
+<meta property="og:image" content="http://blog.mathjia.net/image/bitchion/13.png">
+<meta property="og:image" content="http://blog.mathjia.net/image/bitchion/14.png">
+<meta property="og:image" content="http://blog.mathjia.net/image/bitchion/15.png">
+<meta property="og:image" content="http://blog.mathjia.net/image/bitchion/16.png">
+<meta property="og:image" content="http://blog.mathjia.net/image/bitchion/17.png">
 <meta property="og:updated_time" content="2020-05-14T02:33:43.271Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="区块链：一个故事告诉你比特币的原理及运作机制">
 <meta name="twitter:description" content="周末花时间看了一些比特币原理相关的资料，虽然不敢说把每个细节都完全搞懂了，不过整体思路和关键部分的主要原理还是比较明白。写一篇文章分享给大家。这篇文章的定位会比较科普，尽量用类比的方法将比特币的基本原理讲出来。这篇文章不会涉及算法和协议中比较细节的部分，打算后面会再写一篇程序员视角下的比特币原理，那里会从技术人员的视角对比特币系统中较为关键的数据结构、算法和协议进行一些讲解。 在这篇文章中我会给出">
-<meta name="twitter:image" content="http://www.mathjia.net/image/bitchion/01.png">
+<meta name="twitter:image" content="http://blog.mathjia.net/image/bitchion/01.png">
   
     <link rel="alternative" href="/atom.xml" title="肆意挥洒の青春 心已远" type="application/atom+xml">
   
@@ -434,7 +434,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://www.mathjia.net/2018/01/12/bitcoin-story/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://blog.mathjia.net/2018/01/12/bitcoin-story/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -511,7 +511,7 @@
 <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://www.mathjia.net/2018/01/12/bitcoin-story/",
+  id: "http://blog.mathjia.net/2018/01/12/bitcoin-story/",
   owner: 'allen001',
   repo: 'allen001.github.io',
   oauth: {
@@ -658,6 +658,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">hashMap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">devops</a>
               </li>
              
@@ -671,10 +675,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">hashMap</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -5,37 +5,37 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="dns-prefetch" href="http://www.mathjia.net">
+  <link rel="dns-prefetch" href="http://blog.mathjia.net">
   <title>Spring事务详解 | 肆意挥洒の青春 心已远</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="概念对于事务(Transaction)的概念，网上有各种版本，大同小异， 事务就是是由一系列对系统中数据进行读写的操作组成的一个程序执行单元，狭义上的事务特指数据库事务。 事务是一系列的动作，它们综合在一起才是一个完整的工作单元，这些动作必须全部完成，如果有一个失败的话，那么事务就会回滚到最开始的状态，仿佛什么都没发生过一样。 在企业级应用程序开发中，事务管理必不可少的技术，用来确保数据的完整性和">
 <meta name="keywords" content="随笔,spring,spring事务">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring事务详解">
-<meta property="og:url" content="http://www.mathjia.net/2018/05/11/spring-transaction/index.html">
+<meta property="og:url" content="http://blog.mathjia.net/2018/05/11/spring-transaction/index.html">
 <meta property="og:site_name" content="肆意挥洒の青春 心已远">
 <meta property="og:description" content="概念对于事务(Transaction)的概念，网上有各种版本，大同小异， 事务就是是由一系列对系统中数据进行读写的操作组成的一个程序执行单元，狭义上的事务特指数据库事务。 事务是一系列的动作，它们综合在一起才是一个完整的工作单元，这些动作必须全部完成，如果有一个失败的话，那么事务就会回滚到最开始的状态，仿佛什么都没发生过一样。 在企业级应用程序开发中，事务管理必不可少的技术，用来确保数据的完整性和">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://www.mathjia.net/image/spring-transcation/1.png">
-<meta property="og:image" content="http://www.mathjia.net/image/spring-transcation/2.png">
-<meta property="og:image" content="http://www.mathjia.net/image/spring-transcation/3.png">
-<meta property="og:image" content="http://www.mathjia.net/image/spring-transcation/phantomread.png">
-<meta property="og:image" content="http://www.mathjia.net/image/spring-transcation/unrepeatedread.png">
-<meta property="og:image" content="http://www.mathjia.net/image/spring-transcation/secondlostupdates.png">
-<meta property="og:image" content="http://www.mathjia.net/image/spring-transcation/isolation.jpg">
-<meta property="og:image" content="http://www.mathjia.net/image/spring-transcation/isolation-phr.png">
-<meta property="og:image" content="http://www.mathjia.net/image/spring-transcation/transaction.jpg">
-<meta property="og:image" content="http://www.mathjia.net/image/spring-transcation/transaction_1.jpg">
-<meta property="og:image" content="http://www.mathjia.net/image/spring-transcation/spring-interface.png">
-<meta property="og:image" content="http://www.mathjia.net/image/spring-transcation/spring-txmanager.jpg">
-<meta property="og:image" content="http://www.mathjia.net/image/spring-transcation/spring-attribute.png">
-<meta property="og:image" content="http://www.mathjia.net/image/spring-transcation/propagation.png">
-<meta property="og:image" content="http://www.mathjia.net/image/spring-transcation/readonly.JPG">
+<meta property="og:image" content="http://blog.mathjia.net/image/spring-transcation/1.png">
+<meta property="og:image" content="http://blog.mathjia.net/image/spring-transcation/2.png">
+<meta property="og:image" content="http://blog.mathjia.net/image/spring-transcation/3.png">
+<meta property="og:image" content="http://blog.mathjia.net/image/spring-transcation/phantomread.png">
+<meta property="og:image" content="http://blog.mathjia.net/image/spring-transcation/unrepeatedread.png">
+<meta property="og:image" content="http://blog.mathjia.net/image/spring-transcation/secondlostupdates.png">
+<meta property="og:image" content="http://blog.mathjia.net/image/spring-transcation/isolation.jpg">
+<meta property="og:image" content="http://blog.mathjia.net/image/spring-transcation/isolation-phr.png">
+<meta property="og:image" content="http://blog.mathjia.net/image/spring-transcation/transaction.jpg">
+<meta property="og:image" content="http://blog.mathjia.net/image/spring-transcation/transaction_1.jpg">
+<meta property="og:image" content="http://blog.mathjia.net/image/spring-transcation/spring-interface.png">
+<meta property="og:image" content="http://blog.mathjia.net/image/spring-transcation/spring-txmanager.jpg">
+<meta property="og:image" content="http://blog.mathjia.net/image/spring-transcation/spring-attribute.png">
+<meta property="og:image" content="http://blog.mathjia.net/image/spring-transcation/propagation.png">
+<meta property="og:image" content="http://blog.mathjia.net/image/spring-transcation/readonly.JPG">
 <meta property="og:updated_time" content="2020-05-14T03:35:19.540Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring事务详解">
 <meta name="twitter:description" content="概念对于事务(Transaction)的概念，网上有各种版本，大同小异， 事务就是是由一系列对系统中数据进行读写的操作组成的一个程序执行单元，狭义上的事务特指数据库事务。 事务是一系列的动作，它们综合在一起才是一个完整的工作单元，这些动作必须全部完成，如果有一个失败的话，那么事务就会回滚到最开始的状态，仿佛什么都没发生过一样。 在企业级应用程序开发中，事务管理必不可少的技术，用来确保数据的完整性和">
-<meta name="twitter:image" content="http://www.mathjia.net/image/spring-transcation/1.png">
+<meta name="twitter:image" content="http://blog.mathjia.net/image/spring-transcation/1.png">
   
     <link rel="alternative" href="/atom.xml" title="肆意挥洒の青春 心已远" type="application/atom+xml">
   
@@ -582,7 +582,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://www.mathjia.net/2018/05/11/spring-transaction/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://blog.mathjia.net/2018/05/11/spring-transaction/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -659,7 +659,7 @@
 <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://www.mathjia.net/2018/05/11/spring-transaction/",
+  id: "http://blog.mathjia.net/2018/05/11/spring-transaction/",
   owner: 'allen001',
   repo: 'allen001.github.io',
   oauth: {
@@ -806,6 +806,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">hashMap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">devops</a>
               </li>
              
@@ -819,10 +823,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">hashMap</a>
               </li>
              
               <li class="article-tag-list-item">
