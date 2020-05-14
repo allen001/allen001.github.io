@@ -17,7 +17,7 @@
 <meta property="og:description" content="1.什么是HashMap 基于哈希表的 Map 接口的实现。此实现提供所有可选的映射操作，并允许使用 null 值和 null 键。（除了非同步和允许使用 null 之外，HashMap 类与 Hashtable 大致相同。）此类不保证映射的顺序，特别是它不保证该顺序恒久不变。 此实现假定哈希函数将元素适当地分布在各桶之间，可为基本操作（get 和 put）提供稳定的性能。迭代 collectio">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://www.hollischuang.com/wp-content/uploads/2016/03/image-1024x622.jpg">
-<meta property="og:updated_time" content="2020-05-14T06:01:52.475Z">
+<meta property="og:updated_time" content="2020-05-14T06:48:07.504Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HashMap原理解读">
 <meta name="twitter:description" content="1.什么是HashMap 基于哈希表的 Map 接口的实现。此实现提供所有可选的映射操作，并允许使用 null 值和 null 键。（除了非同步和允许使用 null 之外，HashMap 类与 Hashtable 大致相同。）此类不保证映射的顺序，特别是它不保证该顺序恒久不变。 此实现假定哈希函数将元素适当地分布在各桶之间，可为基本操作（get 和 put）提供稳定的性能。迭代 collectio">
@@ -184,6 +184,7 @@
         <h2 id="1-什么是HashMap"><a href="#1-什么是HashMap" class="headerlink" title="1.什么是HashMap"></a>1.什么是HashMap</h2><blockquote>
 <p><strong>基于哈希表的 Map 接口的实现</strong>。此实现提供所有可选的映射操作，<strong>并允许使用 null 值和 null 键</strong>。（除了非同步和允许使用 null 之外，HashMap 类与 Hashtable 大致相同。）<strong>此类不保证映射的顺序，特别是它不保证该顺序恒久不变</strong>。 此实现假定哈希函数将元素适当地分布在各桶之间，可为基本操作（get 和 put）提供稳定的性能。迭代 collection 视图所需的时间与 HashMap 实例的“容量”（桶的数量）及其大小（键-值映射关系数）成比例。所以，如果迭代性能很重要，则不要将初始容量设置得太高（或将加载因子设置得太低）。</p>
 </blockquote>
+<a id="more"></a>
 <h2 id="2-HashMap和HashTable的区别"><a href="#2-HashMap和HashTable的区别" class="headerlink" title="2.HashMap和HashTable的区别"></a>2.HashMap和HashTable的区别</h2><blockquote>
 <ol>
 <li><strong>HashTable的方法是同步的</strong>，在方法的前面都有synchronized来同步，<strong>HashMap未经同步</strong>，所以在多线程场合要手动同步。</li>
@@ -214,7 +215,7 @@
 <h2 id="4-HashMap-和-ConcurrentHashMap-的关系"><a href="#4-HashMap-和-ConcurrentHashMap-的关系" class="headerlink" title="4. HashMap 和 ConcurrentHashMap 的关系"></a>4. HashMap 和 ConcurrentHashMap 的关系</h2><blockquote>
 <p>关于这部分内容建议自己去翻翻源码，<code>ConcurrentHashMap</code><br> 也是一种线程安全的集合类，他和<code>HashTable</code>也是有区别的，主要区别就是加锁的粒度以及如何加锁，<code>ConcurrentHashMap</code> 的加锁粒度要比<code>HashTable</code>更细一点。将数据分成一段一段的存储，然后给每一段数据配一把锁，当一个线程占用锁访问其中一个段数据的时候，其他段的数据也能被其他线程访问。</p>
 </blockquote>
-<a id="more"></a>
+<!--more-->
 <h2 id="5-HashMap实现原理分析"><a href="#5-HashMap实现原理分析" class="headerlink" title="5. HashMap实现原理分析"></a>5. HashMap实现原理分析</h2><p><code>HashMap的数据结构</code> 数据结构中有<code>数组</code>和<code>链表</code>来实现对数据的存储，但这两者基本上是两个极端。</p>
 <blockquote>
 <p><strong>数组</strong>:数组必须事先定义固定的长度（元素个数），不能适应数据动态地增减的情况。当数据增加时，可能超出原先定义的元素个数；当数据减少时，造成内存浪费。</p>
@@ -673,7 +674,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="#" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接QQ 2462307235</a>
+              <a href="https://www.csdn.net" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>CSDN</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://juejin.im" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>掘金</a>
             </li>
           
         </ul>

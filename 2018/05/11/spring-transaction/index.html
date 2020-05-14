@@ -31,7 +31,7 @@
 <meta property="og:image" content="http://blog.mathjia.net/image/spring-transcation/spring-attribute.png">
 <meta property="og:image" content="http://blog.mathjia.net/image/spring-transcation/propagation.png">
 <meta property="og:image" content="http://blog.mathjia.net/image/spring-transcation/readonly.JPG">
-<meta property="og:updated_time" content="2020-05-14T03:35:19.540Z">
+<meta property="og:updated_time" content="2020-05-14T06:47:00.553Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring事务详解">
 <meta name="twitter:description" content="概念对于事务(Transaction)的概念，网上有各种版本，大同小异， 事务就是是由一系列对系统中数据进行读写的操作组成的一个程序执行单元，狭义上的事务特指数据库事务。 事务是一系列的动作，它们综合在一起才是一个完整的工作单元，这些动作必须全部完成，如果有一个失败的话，那么事务就会回滚到最开始的状态，仿佛什么都没发生过一样。 在企业级应用程序开发中，事务管理必不可少的技术，用来确保数据的完整性和">
@@ -200,6 +200,7 @@
 <p>事务是一系列的动作，它们综合在一起才是一个完整的工作单元，这些动作必须全部完成，如果有一个失败的话，那么事务就会回滚到最开始的状态，仿佛什么都没发生过一样。</p>
 <p>在企业级应用程序开发中，事务管理必不可少的技术，用来确保数据的完整性和一致性。</p>
 <p>比如你去ATM机取1000块钱，大体有两个步骤：首先输入密码金额，银行卡扣掉1000元钱；然后ATM出1000元钱。这两个步骤必须是要么都执行要么都不执行。如果银行卡扣除了1000块但是ATM出钱失败的话，你将会损失1000元；如果银行卡扣钱失败但是ATM却出了1000块，那么银行将损失1000元。所以，如果一个步骤成功另一个步骤失败对双方都不是好事，如果不管哪一个步骤失败了以后，整个取钱过程都能回滚，也就是完全取消所有操作的话，这对双方都是极好的。</p>
+<a id="more"></a>
 <h1 id="事务的特性"><a href="#事务的特性" class="headerlink" title="事务的特性"></a>事务的特性</h1><p>大名鼎鼎的ACID</p>
 <ol>
 <li>原子性（Atomicity），事务必须是一个原子的操作序列单元，一次事务只允许存在两种状态，全部成功或全部失败，任何一个操作失败都将导致整个事务失败</li>
@@ -293,7 +294,6 @@
 <p>一级封锁协议：事务T在修改数据R之前必须对它加X锁，直到事务结束方可释放。而若事务T只是读数据，不进行修改，则不需加锁，因此一级加锁协议下可能会出现脏读和不可重复读。</p>
 <p>二级加锁协议：在一级加锁协议的基础上，加上这样一条规则——事务T在读取数据R之前必须对它加S锁，直到读取完毕以后释放。二级加锁协议下可能会出现不可重复读。</p>
 <p>三级加锁协议：在一级加锁协议的基础上，加上这样一条规则——事务T在读取数据R之前必须对它加S锁，直到事务结束方可释放。三级加锁协议避免了脏读和不可重复读的问题</p>
-<a id="more"></a>
 <h1 id="Spring事务"><a href="#Spring事务" class="headerlink" title="Spring事务"></a>Spring事务</h1><p>Spring事务管理的实现有许多细节，如果对整个接口框架有个大体了解会非常有利于我们理解事务</p>
 <p><img src="/image/spring-transcation/transaction.jpg" alt="image"></p>
 <p><img src="/image/spring-transcation/transaction_1.jpg" alt="image"></p>
@@ -895,7 +895,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="#" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接QQ 2462307235</a>
+              <a href="https://www.csdn.net" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>CSDN</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://juejin.im" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>掘金</a>
             </li>
           
         </ul>

@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://blog.mathjia.net/image/java-classloader/bfd92386a1b48076792e68b596846499.jpg">
 <meta property="og:image" content="http://blog.mathjia.net/image/java-classloader/bdc2d12f90867717d1bbc5bc01bb614f.jpg">
 <meta property="og:image" content="http://blog.mathjia.net/image/java-classloader/e1aaef260db7f48558149ce9b0c2c3d8.jpg">
-<meta property="og:updated_time" content="2020-05-14T06:01:59.896Z">
+<meta property="og:updated_time" content="2020-05-14T06:48:30.273Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java ClassLoader 分析整理">
 <meta name="twitter:description" content="什么是CLassLoader大家都知道，当我们写好一个Java程序之后，不是管是CS还是BS应用，都是由若干个.class文件组织而成的一个完整的Java应用程序，当程序在运行时，即会调用该程序的一个入口函数来调用系统的相关功能，而这些功能都被封装在不同的class文件当中，所以经常要从这个class文件中要调用另外一个class文件中的方法，如果另外一个文件不存在的，则会引发系统异常。而程序在启">
@@ -193,6 +193,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="什么是CLassLoader"><a href="#什么是CLassLoader" class="headerlink" title="什么是CLassLoader"></a>什么是CLassLoader</h2><p>大家都知道，当我们写好一个Java程序之后，不是管是CS还是BS应用，都是由若干个.class文件组织而成的一个完整的Java应用程序，当程序在运行时，即会调用该程序的一个入口函数来调用系统的相关功能，而这些功能都被封装在不同的class文件当中，所以经常要从这个class文件中要调用另外一个class文件中的方法，如果另外一个文件不存在的，则会引发系统异常。而程序在启动的时候，并不会一次性加载程序所要用的所有class文件，而是根据程序的需要，通过Java的类加载机制（ClassLoader）来动态加载某个class文件到内存当中的，从而只有class文件被载入到了内存之后，才能被其它class所引用。所以ClassLoader就是用来动态加载class文件到内存当中用的。</p>
+<a id="more"></a>
 <h2 id="Java-默认提供三个ClassLoader"><a href="#Java-默认提供三个ClassLoader" class="headerlink" title="Java 默认提供三个ClassLoader"></a>Java 默认提供三个ClassLoader</h2><ul>
 <li><strong>Bootstrap ClassLoader</strong>:称为启动类加载器，是Java类加载层次中最顶层的类加载器，负责加载JDK中的核心类库，如：<code>rt.jar</code>、<code>resources.jar</code>、<code>charsets.jar</code>等。<br>可通过如下程序获得该类加载器从哪些地方加载了相关的jar或class文件：</li>
 </ul>
@@ -219,8 +220,6 @@
 <h4 id="3-查看测试结果"><a href="#3-查看测试结果" class="headerlink" title="3. 查看测试结果"></a>3. 查看测试结果</h4><p><img src="/image/java-classloader/40f5888b67c748df7efba008e7c2f9d2.jpg" alt="测试结果"></p>
 <p><strong>结论：从结果中可以看出，虽然是同一份class字节码文件，但是由于被两个不同的ClassLoader实例所加载，所以JVM认为它们就是两个不同的类。</strong></p>
 <h4 id="4-ClassLoader的体系架构"><a href="#4-ClassLoader的体系架构" class="headerlink" title="4.ClassLoader的体系架构"></a>4.ClassLoader的体系架构</h4><p><img src="/image/java-classloader/7c47cc427c8e826ebea320219ce81394.png" alt="体系架构"></p>
-<hr>
-<a id="more"></a>
 <p><strong>验证ClassLoader加载类的原理</strong></p>
 <p><strong>测试1</strong>：打印ClassLoader类的层次结构，请看下面这段代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ClassLoader loader = ClassLoaderTest.class.getClassLoader();</span><br><span class="line">//获得加载ClassLoaderTest.class这个类的类加载器  </span><br><span class="line">while(loader != null) &#123;  </span><br><span class="line">    System.out.println(loader);  </span><br><span class="line">    loader = loader.getParent();    //获得父类加载器的引用</span><br><span class="line">&#125;  </span><br><span class="line">System.out.println(loader);</span><br></pre></td></tr></table></figure></p>
 <p><strong>打印结果：</strong> </p>
@@ -702,7 +701,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="#" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接QQ 2462307235</a>
+              <a href="https://www.csdn.net" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>CSDN</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://juejin.im" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>掘金</a>
             </li>
           
         </ul>

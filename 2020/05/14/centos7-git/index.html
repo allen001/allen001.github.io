@@ -8,21 +8,21 @@
   <link rel="dns-prefetch" href="http://blog.mathjia.net">
   <title>Centos7安装Git | 肆意挥洒の青春 心已远</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. 从github下载最新版本地址： https://github.com/git/git/releases  选择最新的tar.gz包   2. 通过Ftp上传服务器ftp 上传 3. 安装必要依赖包1yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel gcc perl-ExtUtils-MakeM">
+  <meta name="description" content="1. 从github下载最新版本地址： https://github.com/git/git/releases  选择最新的tar.gz包   2. 通过Ftp上传服务器ftp 上传">
 <meta name="keywords" content="随笔,git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Centos7安装Git">
 <meta property="og:url" content="http://blog.mathjia.net/2020/05/14/centos7-git/index.html">
 <meta property="og:site_name" content="肆意挥洒の青春 心已远">
-<meta property="og:description" content="1. 从github下载最新版本地址： https://github.com/git/git/releases  选择最新的tar.gz包   2. 通过Ftp上传服务器ftp 上传 3. 安装必要依赖包1yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel gcc perl-ExtUtils-MakeM">
+<meta property="og:description" content="1. 从github下载最新版本地址： https://github.com/git/git/releases  选择最新的tar.gz包   2. 通过Ftp上传服务器ftp 上传">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://blog.mathjia.net/image/centos-git/1587025342450.png">
 <meta property="og:image" content="http://blog.mathjia.net/image/centos-git/1587025280990.png">
 <meta property="og:image" content="http://blog.mathjia.net/image/centos-git/1587025243394.png">
-<meta property="og:updated_time" content="2020-05-14T03:34:11.134Z">
+<meta property="og:updated_time" content="2020-05-14T06:49:35.973Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Centos7安装Git">
-<meta name="twitter:description" content="1. 从github下载最新版本地址： https://github.com/git/git/releases  选择最新的tar.gz包   2. 通过Ftp上传服务器ftp 上传 3. 安装必要依赖包1yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel gcc perl-ExtUtils-MakeM">
+<meta name="twitter:description" content="1. 从github下载最新版本地址： https://github.com/git/git/releases  选择最新的tar.gz包   2. 通过Ftp上传服务器ftp 上传">
 <meta name="twitter:image" content="http://blog.mathjia.net/image/centos-git/1587025342450.png">
   
     <link rel="alternative" href="/atom.xml" title="肆意挥洒の青春 心已远" type="application/atom+xml">
@@ -187,6 +187,7 @@
 <p>选择最新的<code>tar.gz</code>包</p>
 <p><img src="/image/centos-git/1587025342450.png" alt="Git源码包"> </p>
 <h2 id="2-通过Ftp上传服务器"><a href="#2-通过Ftp上传服务器" class="headerlink" title="2. 通过Ftp上传服务器"></a>2. 通过Ftp上传服务器</h2><p>ftp 上传</p>
+<a id="more"></a>
 <h2 id="3-安装必要依赖包"><a href="#3-安装必要依赖包" class="headerlink" title="3. 安装必要依赖包"></a>3. 安装必要依赖包</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel gcc perl-ExtUtils-MakeMaker</span><br></pre></td></tr></table></figure>
 <h2 id="4-解压-amp-编译"><a href="#4-解压-amp-编译" class="headerlink" title="4. 解压&amp;编译"></a>4. 解压&amp;编译</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 解压</span></span><br><span class="line">tar -zxvf git-2.26.1.tar.gz</span><br><span class="line"><span class="built_in">cd</span> git-2.26.1</span><br><span class="line"></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">make prefix=/usr/<span class="built_in">local</span>/git all</span><br><span class="line">make prefix=/usr/<span class="built_in">local</span>/git install</span><br></pre></td></tr></table></figure>
 <h2 id="5-配置环境变量"><a href="#5-配置环境变量" class="headerlink" title="5. 配置环境变量"></a>5. 配置环境变量</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 打开文件</span></span><br><span class="line">vim /etc/profile</span><br><span class="line"></span><br><span class="line"><span class="comment"># 底部加上git配置</span></span><br><span class="line">PATH=<span class="variable">$PATH</span>:/usr/<span class="built_in">local</span>/git/bin</span><br><span class="line"><span class="built_in">export</span> PATH</span><br><span class="line"></span><br><span class="line"><span class="comment"># 刷新环境变量</span></span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
@@ -610,7 +611,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="#" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接QQ 2462307235</a>
+              <a href="https://www.csdn.net" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>CSDN</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://juejin.im" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>掘金</a>
             </li>
           
         </ul>

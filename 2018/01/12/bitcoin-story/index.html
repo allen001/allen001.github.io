@@ -33,7 +33,7 @@
 <meta property="og:image" content="http://blog.mathjia.net/image/bitchion/15.png">
 <meta property="og:image" content="http://blog.mathjia.net/image/bitchion/16.png">
 <meta property="og:image" content="http://blog.mathjia.net/image/bitchion/17.png">
-<meta property="og:updated_time" content="2020-05-14T02:33:43.271Z">
+<meta property="og:updated_time" content="2020-05-14T06:49:18.866Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="区块链：一个故事告诉你比特币的原理及运作机制">
 <meta name="twitter:description" content="周末花时间看了一些比特币原理相关的资料，虽然不敢说把每个细节都完全搞懂了，不过整体思路和关键部分的主要原理还是比较明白。写一篇文章分享给大家。这篇文章的定位会比较科普，尽量用类比的方法将比特币的基本原理讲出来。这篇文章不会涉及算法和协议中比较细节的部分，打算后面会再写一篇程序员视角下的比特币原理，那里会从技术人员的视角对比特币系统中较为关键的数据结构、算法和协议进行一些讲解。 在这篇文章中我会给出">
@@ -202,6 +202,7 @@
 <h2 id="问题的提出"><a href="#问题的提出" class="headerlink" title="问题的提出"></a>问题的提出</h2><p>我们先从比特币产生的动机开始。</p>
 <h3 id="以物易物的比特村"><a href="#以物易物的比特村" class="headerlink" title="以物易物的比特村"></a>以物易物的比特村</h3><p>话说在这个世界上，有一个叫比特村的小村庄，村庄共有几百户人家。这个村庄几乎与世隔绝，过着自给自足的生活。由于没有大规模贸易，比特村村民一直过着以物易物的生活，也就是说村民之间并没有使用统一的货币，互相间的贸易基本上就是老张家拿一袋面粉换老李家一只羊，王大嫂拿一筐野果换刘大婶两尺布。村民们一直就这么纯朴的生活着。</p>
 <p><img src="/image/bitchion/01.png" alt="以物易物的比特村"></p>
+<a id="more"></a>
 <h3 id="实物货币"><a href="#实物货币" class="headerlink" title="实物货币"></a>实物货币</h3><p>终于有一天，村民觉得一直这样以物易物实在太不方便了，于是村子全员开会，讨论如何解决这个问题。有人提议，以便于分割且稀有的东西，例如黄金，作为一般等价物，把其它物品和黄金的对应关系编成一张表格，例如一克黄金对应一只羊，一克黄金对应一袋面粉等等，此时老张再也不用扛着一袋面粉气喘吁吁的去老李家换羊了，他只要从家里摸出一克金子，就可以去老李家牵回一只羊，而老李拿着这一克黄金可以从任何愿意出让面粉的人那里换回一袋面粉，当然也可以换取任何和一克黄金等值的物品。</p>
 <p>此时比特村进入了实物货币时代。</p>
 <p><img src="/image/bitchion/02.png" alt="实物货币"></p>
@@ -236,7 +237,6 @@
 <h3 id="收款人确认付款人余额"><a href="#收款人确认付款人余额" class="headerlink" title="收款人确认付款人余额"></a>收款人确认付款人余额</h3><p>这个系统到目前还是很有问题。通过保密印章，收款人虽然可以确认付款人确实签署了这份单子，但是无法自行确认付款人是否有足够的余额支付。之前的中央虚拟货币系统中，二狗子负责检查付款人的余额，并通知收款人交易是否有效，现在把二狗子开了，谁来负责记账和确认每笔交易的有效性呢？</p>
 <p>之前说过，中本聪设计的这个系统是分布式货币系统，不依赖任何中央人物，所以不会有一个或少数几个人负责这件事，最终承担这份工作的是之前所提到的矿工组织。老张、老李和全村其他任何使用比特币进行交易的村民都依赖矿工组织的工作才能完成交易。</p>
 <h2 id="矿工的工作"><a href="#矿工的工作" class="headerlink" title="矿工的工作"></a>矿工的工作</h2><p>矿工的工作是整个系统的核心，也是最复杂性最高的地方。下面逐步介绍矿工的工作内容和目的。</p>
-<a id="more"></a>
 <h3 id="矿工的工具"><a href="#矿工的工具" class="headerlink" title="矿工的工具"></a>矿工的工具</h3><p>俗话说，工欲善其事，必先利其器。比特币矿工虽然不用铁撅、铁锨和探照灯等工具，不过也要有一些必备的东西。</p>
 <p>初始账簿。每个组首先自己复制一份初始账簿，初始账簿只有一页，记录了系统的第一次赠送</p>
 <p>空账簿纸。每个小组有若干账簿纸，每一页纸上仅有账簿结构，没有填内容，具体内容的书写规则后面讲述。下面是一张空账簿纸的样子，各个字段的意义后面会说到</p>
@@ -747,7 +747,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="#" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接QQ 2462307235</a>
+              <a href="https://www.csdn.net" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>CSDN</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://juejin.im" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>掘金</a>
             </li>
           
         </ul>
