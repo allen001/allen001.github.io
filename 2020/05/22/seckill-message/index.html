@@ -8,22 +8,23 @@
   <link rel="dns-prefetch" href="http://blog.mathjia.net">
   <title>简述秒杀系统 | 肆意挥洒の青春 心已远</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="系统特征 时间极短 瞬间请求量非常大  活动注意点 不能超卖（直接经济损失，平台信誉受损） 防黑产,黄牛 (阿里月饼门) : 机器的请求速度比人的手速快太多了 瞬间爆发的高流量  典型的读多写少的场景（cache 缓存) 页面静态化 ,利用cdn服务器缓存前端文件 按钮置灰3秒. (利用风控规则过滤掉非法用户) 接口层可以做开关限流( 一旦抢购结束,则直接返回失败). 堆机器, 搭建集群. 利用n">
+  <meta name="description" content="系统特征 时间极短 瞬间请求量非常大  活动注意点 不能超卖（直接经济损失，平台信誉受损）  防黑产,黄牛 (阿里月饼门) : 机器的请求速度比人的手速快太多了  瞬间爆发的高流量  典型的读多写少的场景（cache 缓存)  页面静态化 ,利用cdn服务器缓存前端文件  按钮置灰3秒. (利用风控规则过滤掉非法用户)  接口层可以做开关限流( 一旦抢购结束,则直接返回失败).  堆机器, 搭建集">
 <meta name="keywords" content="秒杀,docker,mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="简述秒杀系统">
 <meta property="og:url" content="http://blog.mathjia.net/2020/05/22/seckill-message/index.html">
 <meta property="og:site_name" content="肆意挥洒の青春 心已远">
-<meta property="og:description" content="系统特征 时间极短 瞬间请求量非常大  活动注意点 不能超卖（直接经济损失，平台信誉受损） 防黑产,黄牛 (阿里月饼门) : 机器的请求速度比人的手速快太多了 瞬间爆发的高流量  典型的读多写少的场景（cache 缓存) 页面静态化 ,利用cdn服务器缓存前端文件 按钮置灰3秒. (利用风控规则过滤掉非法用户) 接口层可以做开关限流( 一旦抢购结束,则直接返回失败). 堆机器, 搭建集群. 利用n">
+<meta property="og:description" content="系统特征 时间极短 瞬间请求量非常大  活动注意点 不能超卖（直接经济损失，平台信誉受损）  防黑产,黄牛 (阿里月饼门) : 机器的请求速度比人的手速快太多了  瞬间爆发的高流量  典型的读多写少的场景（cache 缓存)  页面静态化 ,利用cdn服务器缓存前端文件  按钮置灰3秒. (利用风控规则过滤掉非法用户)  接口层可以做开关限流( 一旦抢购结束,则直接返回失败).  堆机器, 搭建集">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2020/05/22/eQkhKmd5fwHztOl.png">
 <meta property="og:image" content="https://i.loli.net/2020/05/22/Y6IcksTKeD91Hg5.png">
 <meta property="og:image" content="https://i.loli.net/2020/05/22/69COYGVhu8rRSAt.png">
 <meta property="og:image" content="https://i.loli.net/2020/05/22/NAEI4j63i5l2WBD.png">
-<meta property="og:updated_time" content="2020-05-22T09:58:10.625Z">
+<meta property="og:updated_time" content="2020-05-22T10:10:59.037Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="简述秒杀系统">
-<meta name="twitter:description" content="系统特征 时间极短 瞬间请求量非常大  活动注意点 不能超卖（直接经济损失，平台信誉受损） 防黑产,黄牛 (阿里月饼门) : 机器的请求速度比人的手速快太多了 瞬间爆发的高流量  典型的读多写少的场景（cache 缓存) 页面静态化 ,利用cdn服务器缓存前端文件 按钮置灰3秒. (利用风控规则过滤掉非法用户) 接口层可以做开关限流( 一旦抢购结束,则直接返回失败). 堆机器, 搭建集群. 利用n">
-<meta name="twitter:image" content="https://i.loli.net/2020/05/22/Y6IcksTKeD91Hg5.png">
+<meta name="twitter:description" content="系统特征 时间极短 瞬间请求量非常大  活动注意点 不能超卖（直接经济损失，平台信誉受损）  防黑产,黄牛 (阿里月饼门) : 机器的请求速度比人的手速快太多了  瞬间爆发的高流量  典型的读多写少的场景（cache 缓存)  页面静态化 ,利用cdn服务器缓存前端文件  按钮置灰3秒. (利用风控规则过滤掉非法用户)  接口层可以做开关限流( 一旦抢购结束,则直接返回失败).  堆机器, 搭建集">
+<meta name="twitter:image" content="https://i.loli.net/2020/05/22/eQkhKmd5fwHztOl.png">
   
     <link rel="alternative" href="/atom.xml" title="肆意挥洒の青春 心已远" type="application/atom+xml">
   
@@ -204,40 +205,51 @@ var _hmt = _hmt || [];
 <li>瞬间请求量非常大</li>
 </ol>
 <h2 id="活动注意点"><a href="#活动注意点" class="headerlink" title="活动注意点"></a>活动注意点</h2><ol>
-<li>不能超卖（直接经济损失，平台信誉受损）</li>
-<li>防黑产,黄牛 (阿里月饼门) : 机器的请求速度比人的手速快太多了</li>
+<li><p>不能超卖（直接经济损失，平台信誉受损）</p>
+</li>
+<li><p>防黑产,黄牛 (阿里月饼门) : 机器的请求速度比人的手速快太多了</p>
+</li>
 <li><p>瞬间爆发的高流量</p>
 <ul>
-<li>典型的读多写少的场景（cache 缓存)</li>
-<li>页面静态化 ,利用cdn服务器缓存前端文件</li>
-<li>按钮置灰3秒. (利用风控规则过滤掉非法用户)</li>
-<li>接口层可以做开关限流( 一旦抢购结束,则直接返回失败).</li>
-<li>堆机器, 搭建集群. 利用nginx做负载均衡.</li>
-<li>热点隔离 增加资源  有限放流(熔断)  多次请求合并为一次</li>
+<li><p>典型的读多写少的场景（cache 缓存)</p>
+</li>
+<li><p>页面静态化 ,利用cdn服务器缓存前端文件</p>
+</li>
+<li><p>按钮置灰3秒. (利用风控规则过滤掉非法用户)</p>
+</li>
+<li><p>接口层可以做开关限流( 一旦抢购结束,则直接返回失败).</p>
+</li>
+<li><p>堆机器, 搭建集群. 利用nginx做负载均衡.</p>
+</li>
+<li><p>热点隔离 增加资源  有限放流(熔断)  多次请求合并为一次</p>
+</li>
 </ul>
 </li>
 <li><p>尽量把请求拦截在上层</p>
-<p>Mysql单机读能力为5k, 写能力为3k</p>
-<p>redis单机读能力最高可达10w, 写能力能达到3-5w</p>
+<ul>
+<li>Mysql单机读能力为5k, 写能力为3k</li>
+<li>redis单机读能力最高可达10w, 写能力能达到3-5w</li>
+</ul>
 </li>
 <li><p>预热. 运营人员提前将数据写入redis</p>
 </li>
 <li><p>异步去扣减库存 (消息队列)</p>
-<p>qps 每秒查询量</p>
-<p>tps 每秒处理的事务量</p>
-<p>pv page view </p>
-<p>uv unique view</p>
-<p>ip 不重复的ip</p>
+<ul>
+<li>qps=&gt; 每秒查询量</li>
+<li>tps=&gt; 每秒处理的事务量</li>
+<li>pv=&gt; page view </li>
+<li>uv=&gt; unique view</li>
+<li>ip=&gt; 不重复的ip</li>
+</ul>
 </li>
 </ol>
-<h2 id="系统业务图"><a href="#系统业务图" class="headerlink" title="系统业务图"></a>系统业务图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A[秒杀开始] --&gt; B[用户点击秒杀链接]</span><br><span class="line"> B --&gt; C[抢购资格]</span><br><span class="line"> C --&gt; | 否| D&gt;结束并且拉黑]</span><br><span class="line"> C --&gt; | 是 | E[库存是否足够]</span><br><span class="line"> E --&gt; |是 | F&gt;生成订单]</span><br><span class="line"> E --&gt; | 否 | G&gt;活动结束]</span><br><span class="line"> G --&gt; H&#123;修改redis的活动状态&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="系统业务图"><a href="#系统业务图" class="headerlink" title="系统业务图"></a>系统业务图</h2><p><img src="https://i.loli.net/2020/05/22/eQkhKmd5fwHztOl.png" alt></p>
 <h2 id="技术选项"><a href="#技术选项" class="headerlink" title="技术选项"></a>技术选项</h2><h3 id="cache-nosql-db"><a href="#cache-nosql-db" class="headerlink" title="cache,nosql,db"></a>cache,nosql,db</h3><p><strong>缓存穿透, 缓存雪崩</strong></p>
 <p>db: 必须具备ACID的特性,才能算得上数据库</p>
-<ol>
-<li><p>redis (单线程,单核的内存数据集) </p>
+<p>1： redis (单线程,单核的内存数据集) </p>
 <ul>
 <li><p>持久性: 持久化数据 AOF (append only file) ,RDB (redis database)</p>
-</li>
+<ul>
 <li><p>一致性: 并不支持严格的一致性</p>
 </li>
 <li><p>隔离性 : 天然支持的 ,单线程程序</p>
@@ -247,20 +259,22 @@ var _hmt = _hmt || [];
 </li>
 </ul>
 </li>
-<li><p>memcached</p>
-<ol>
-<li>只支持string</li>
-<li>不支持持久化,通过第三方的插件来间接持久化</li>
-<li>不支持集群方案, 是通过hash算法来实现集群</li>
-<li>多线程的，速度比redis快 (线程安全)</li>
-</ol>
+</ul>
+<p>2：memcached</p>
+<ul>
+<li><p>只支持string</p>
 </li>
-<li><p>本地缓存 ehcache, guava cache,spring cache</p>
+<li><p>不支持持久化,通过第三方的插件来间接持久化</p>
+</li>
+<li><p>不支持集群方案, 是通过hash算法来实现集群</p>
+</li>
+<li><p>多线程的，速度比redis快 (线程安全)</p>
+</li>
+</ul>
+<p>3：本地缓存 ehcache, guava cache,spring cache</p>
 <ul>
 <li>速度最快,但是单机的</li>
 </ul>
-</li>
-</ol>
 <h2 id="JMeter测试样本"><a href="#JMeter测试样本" class="headerlink" title="JMeter测试样本"></a>JMeter测试样本</h2><p><img src="https://i.loli.net/2020/05/22/Y6IcksTKeD91Hg5.png" alt></p>
 <p>样本: 请求总数</p>
 <p>平均值: 平均响应时间(毫秒)</p>
@@ -277,31 +291,19 @@ var _hmt = _hmt || [];
 </ol>
 <p>qps ： query per second； 查询是不需要事务的.</p>
 <p>tps ： transaction.   insert ,update, delete. </p>
-<h2 id="实战Coding"><a href="#实战Coding" class="headerlink" title="实战Coding"></a>实战Coding</h2><h3 id="使用docker安装redis"><a href="#使用docker安装redis" class="headerlink" title="使用docker安装redis"></a>使用docker安装redis</h3><ol>
-<li><p>docker pull redis</p>
-</li>
-<li><p>配置好redis的配置和data目录</p>
+<h2 id="实战Coding"><a href="#实战Coding" class="headerlink" title="实战Coding"></a>实战Coding</h2><h3 id="使用docker安装redis"><a href="#使用docker安装redis" class="headerlink" title="使用docker安装redis"></a>使用docker安装redis</h3><p>1：<code>docker pull redis</code></p>
+<p>2：配置好redis的配置和data目录</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># Redis默认不是以守护进程的方式运行，可以通过该配置项修改，使用yes启用守护进程</span><br><span class="line">daemonize no</span><br><span class="line"></span><br><span class="line"># 指定Redis监听端口，默认端口为6379</span><br><span class="line">port 6379</span><br><span class="line"></span><br><span class="line"># 绑定的主机地址，不要绑定容器的本地127.0.0.1地址，因为这样就无法在容器外部访问</span><br><span class="line">bind 0.0.0.0</span><br><span class="line"></span><br><span class="line"># 持久化</span><br><span class="line">appendonly yes</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>启动redis</p>
+<p>3：启动redis</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 6379:6379 --name redis -v Users/aya/docker/redis/conf/redis.conf:/etc/redis/redis.conf -v Users/aya/docker/redis/data:/data -d redis redis-server /etc/redis/redis.conf</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>测试redis</p>
+<p>4：测试redis</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it redis redis-cli</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="使用docker安装mysql"><a href="#使用docker安装mysql" class="headerlink" title="使用docker安装mysql"></a>使用docker安装mysql</h3><ol>
-<li><p>docker pull mysql</p>
-</li>
-<li><p>配置mysql</p>
+<h3 id="使用docker安装mysql"><a href="#使用docker安装mysql" class="headerlink" title="使用docker安装mysql"></a>使用docker安装mysql</h3><p>1：<code>docker pull mysql</code></p>
+<p>2：配置mysql</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">user=mysql</span><br><span class="line">character-set-server=utf8</span><br><span class="line">default_authentication_plugin=mysql_native_password</span><br><span class="line">secure_file_priv=/var/lib/mysql</span><br><span class="line">expire_logs_days=7</span><br><span class="line">sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION</span><br><span class="line">max_connections=1000</span><br><span class="line"></span><br><span class="line">[client]</span><br><span class="line">default-character-set=utf8</span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line">default-character-set=utf8</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>启动mysql</p>
+<p>3：启动mysql</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --restart=always --privileged=<span class="literal">true</span> -d -v /Users/aya/docker/mysql/data/:/var/lib/mysql -v /Users/aya/docker/mysql/conf.d:/etc/mysql/conf.d -v /Users/aya/docker/mysql/conf/my.cnf:/etc/mysql/my.cnf -p 3306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=123456 mysql</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>测试</p>
-</li>
-</ol>
+<p>4：测试</p>
 <h3 id="初步的减库存逻辑"><a href="#初步的减库存逻辑" class="headerlink" title="初步的减库存逻辑"></a>初步的减库存逻辑</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/seckill/&#123;id&#125;"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">secKill</span><span class="params">(@PathVariable <span class="keyword">long</span> id)</span> </span>&#123;</span><br><span class="line">    Product product = service.select(id);</span><br><span class="line">    <span class="keyword">int</span> stock = product.getStock();</span><br><span class="line">    <span class="keyword">if</span> (stock &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (service.secKill(id) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"秒杀成功"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"秒杀失败"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
