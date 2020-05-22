@@ -196,27 +196,17 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="系统特征"><a href="#系统特征" class="headerlink" title="系统特征"></a>系统特征</h2><p>1：时间极短</p>
-<p>2：瞬间请求量非常大</p>
-<h2 id="活动注意点"><a href="#活动注意点" class="headerlink" title="活动注意点"></a>活动注意点</h2><p>1：不能超卖（直接经济损失，平台信誉受损）</p>
-<p>2：防黑产,黄牛 (阿里月饼门) : 机器的请求速度比人的手速快太多了</p>
-<p>3：瞬间爆发的高流量</p>
+        <h2 id="系统特征"><a href="#系统特征" class="headerlink" title="系统特征"></a>系统特征</h2><p>1: 时间极短<br>2: 瞬间请求量非常大</p>
+<h2 id="活动注意点"><a href="#活动注意点" class="headerlink" title="活动注意点"></a>活动注意点</h2><p>1: 不能超卖（直接经济损失，平台信誉受损）<br>2: 防黑产,黄牛 (阿里月饼门) , 机器的请求速度比人的手速快太多了<br>3: 瞬间爆发的高流量</p>
 <ul>
 <li>典型的读多写少的场景（cache 缓存)</li>
 <li>页面静态化 ,利用cdn服务器缓存前端文件</li>
 <li>按钮置灰3秒. (利用风控规则过滤掉非法用户)</li>
 <li>接口层可以做开关限流( 一旦抢购结束,则直接返回失败)</li>
 <li>堆机器, 搭建集群. 利用nginx做负载均衡</li>
-<li>热点隔离 增加资源  有限放流(熔断)  多次请求合并为一次</li>
-</ul>
-<p>4：尽量把请求拦截在上层</p>
-<ul>
+<li>热点隔离 增加资源  有限放流(熔断)  多次请求合并为一次<br>4: 尽量把请求拦截在上层</li>
 <li>Mysql单机读能力为5k, 写能力为3k</li>
-<li>redis单机读能力最高可达10w, 写能力能达到3-5w</li>
-</ul>
-<p>5：预热. 运营人员提前将数据写入redis</p>
-<p>6：异步去扣减库存 (消息队列)</p>
-<ul>
+<li>redis单机读能力最高可达10w, 写能力能达到3-5w<br>5: 预热. 运营人员提前将数据写入redis<br>6: 异步去扣减库存 (消息队列)</li>
 <li>qps=&gt; 每秒查询量</li>
 <li>tps=&gt; 每秒处理的事务量</li>
 <li>pv=&gt; page view </li>
@@ -1172,6 +1162,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">git安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">OCR</a>
               </li>
              
@@ -1181,10 +1175,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">git安装</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1216,18 +1206,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">并发</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ConcurrentHashMap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">devops</a>
               </li>
              
@@ -1240,15 +1218,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">hashMap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">并发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ConcurrentHashMap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">elasticsearch</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">kibana</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">hashMap</a>
               </li>
              
               <li class="article-tag-list-item">
