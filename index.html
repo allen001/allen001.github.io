@@ -226,7 +226,13 @@ var _hmt = _hmt || [];
 </ul>
 </blockquote>
 <h2 id="系统业务图"><a href="#系统业务图" class="headerlink" title="系统业务图"></a>系统业务图</h2><p><img src="https://i.loli.net/2020/05/22/eQkhKmd5fwHztOl.png" alt="秒杀系统业务图"></p>
-<h2 id="技术选项cache-nosql-db"><a href="#技术选项cache-nosql-db" class="headerlink" title="技术选项cache,nosql,db"></a>技术选项cache,nosql,db</h2><p><strong>缓存穿透, 缓存雪崩</strong><br>db: 必须具备ACID的特性,才能算得上数据库</p>
+<h2 id="技术选项cache-nosql-db"><a href="#技术选项cache-nosql-db" class="headerlink" title="技术选项cache,nosql,db"></a>技术选项cache,nosql,db</h2><p><strong>缓存穿透, 缓存雪崩</strong><br>db: 必须具备ACID的特性,才能算得上数据库<br>1: redis (单线程,单核的内存数据集) </p>
+<blockquote>
+<ul>
+<li>持久性: 持久化数据 AOF (append only file) ,RDB (redis database)</li>
+<li>一致性: 并不支持严格的一致性</li>
+</ul>
+</blockquote>
 
       
 
