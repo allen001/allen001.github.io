@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="http://blog.mathjia.net">
   <title>简述秒杀系统 | 肆意挥洒の青春 心已远</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="系统特征 时间极短 瞬间请求量非常大活动注意点 不能超卖（直接经济损失，平台信誉受损） 防黑产,黄牛 (阿里月饼门) : 机器的请求速度比人的手速快太多了 瞬间爆发的高流量  典型的读多写少的场景（cache 缓存) 页面静态化 ,利用cdn服务器缓存前端文件 按钮置灰3秒. (利用风控规则过滤掉非法用户) 接口层可以做开关限流( 一旦抢购结束,则直接返回失败) 堆机器, 搭建集群. 利用ngin">
+  <meta name="description" content="系统特征 时间极短 瞬间请求量非常大  活动注意点 不能超卖（直接经济损失，平台信誉受损） 防黑产,黄牛 (阿里月饼门) : 机器的请求速度比人的手速快太多了 瞬间爆发的高流量 典型的读多写少的场景（cache 缓存) 页面静态化 ,利用cdn服务器缓存前端文件 按钮置灰3秒. (利用风控规则过滤掉非法用户) 接口层可以做开关限流( 一旦抢购结束,则直接返回失败) 堆机器, 搭建集群. 利用ngi">
 <meta name="keywords" content="秒杀,docker,mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="简述秒杀系统">
 <meta property="og:url" content="http://blog.mathjia.net/2020/05/22/seckill-message/index.html">
 <meta property="og:site_name" content="肆意挥洒の青春 心已远">
-<meta property="og:description" content="系统特征 时间极短 瞬间请求量非常大活动注意点 不能超卖（直接经济损失，平台信誉受损） 防黑产,黄牛 (阿里月饼门) : 机器的请求速度比人的手速快太多了 瞬间爆发的高流量  典型的读多写少的场景（cache 缓存) 页面静态化 ,利用cdn服务器缓存前端文件 按钮置灰3秒. (利用风控规则过滤掉非法用户) 接口层可以做开关限流( 一旦抢购结束,则直接返回失败) 堆机器, 搭建集群. 利用ngin">
+<meta property="og:description" content="系统特征 时间极短 瞬间请求量非常大  活动注意点 不能超卖（直接经济损失，平台信誉受损） 防黑产,黄牛 (阿里月饼门) : 机器的请求速度比人的手速快太多了 瞬间爆发的高流量 典型的读多写少的场景（cache 缓存) 页面静态化 ,利用cdn服务器缓存前端文件 按钮置灰3秒. (利用风控规则过滤掉非法用户) 接口层可以做开关限流( 一旦抢购结束,则直接返回失败) 堆机器, 搭建集群. 利用ngi">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2020/05/22/eQkhKmd5fwHztOl.png">
-<meta property="og:updated_time" content="2020-05-22T10:24:18.759Z">
+<meta property="og:updated_time" content="2020-05-22T10:26:11.446Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="简述秒杀系统">
-<meta name="twitter:description" content="系统特征 时间极短 瞬间请求量非常大活动注意点 不能超卖（直接经济损失，平台信誉受损） 防黑产,黄牛 (阿里月饼门) : 机器的请求速度比人的手速快太多了 瞬间爆发的高流量  典型的读多写少的场景（cache 缓存) 页面静态化 ,利用cdn服务器缓存前端文件 按钮置灰3秒. (利用风控规则过滤掉非法用户) 接口层可以做开关限流( 一旦抢购结束,则直接返回失败) 堆机器, 搭建集群. 利用ngin">
+<meta name="twitter:description" content="系统特征 时间极短 瞬间请求量非常大  活动注意点 不能超卖（直接经济损失，平台信誉受损） 防黑产,黄牛 (阿里月饼门) : 机器的请求速度比人的手速快太多了 瞬间爆发的高流量 典型的读多写少的场景（cache 缓存) 页面静态化 ,利用cdn服务器缓存前端文件 按钮置灰3秒. (利用风控规则过滤掉非法用户) 接口层可以做开关限流( 一旦抢购结束,则直接返回失败) 堆机器, 搭建集群. 利用ngi">
 <meta name="twitter:image" content="https://i.loli.net/2020/05/22/eQkhKmd5fwHztOl.png">
   
     <link rel="alternative" href="/atom.xml" title="肆意挥洒の青春 心已远" type="application/atom+xml">
@@ -199,11 +199,12 @@ var _hmt = _hmt || [];
       
         <h2 id="系统特征"><a href="#系统特征" class="headerlink" title="系统特征"></a>系统特征</h2><ol>
 <li>时间极短</li>
-<li>瞬间请求量非常大<h2 id="活动注意点"><a href="#活动注意点" class="headerlink" title="活动注意点"></a>活动注意点</h2></li>
+<li>瞬间请求量非常大</li>
+</ol>
+<h2 id="活动注意点"><a href="#活动注意点" class="headerlink" title="活动注意点"></a>活动注意点</h2><ol>
 <li>不能超卖（直接经济损失，平台信誉受损）</li>
 <li>防黑产,黄牛 (阿里月饼门) : 机器的请求速度比人的手速快太多了</li>
-<li><p>瞬间爆发的高流量</p>
-<ul>
+<li>瞬间爆发的高流量<ul>
 <li>典型的读多写少的场景（cache 缓存)</li>
 <li>页面静态化 ,利用cdn服务器缓存前端文件</li>
 <li>按钮置灰3秒. (利用风控规则过滤掉非法用户)</li>
@@ -212,16 +213,13 @@ var _hmt = _hmt || [];
 <li>热点隔离 增加资源  有限放流(熔断)  多次请求合并为一次</li>
 </ul>
 </li>
-<li><p>尽量把请求拦截在上层</p>
-<ul>
+<li>尽量把请求拦截在上层<ul>
 <li>Mysql单机读能力为5k, 写能力为3k</li>
 <li>redis单机读能力最高可达10w, 写能力能达到3-5w</li>
 </ul>
 </li>
-<li><p>预热. 运营人员提前将数据写入redis</p>
-</li>
-<li><p>异步去扣减库存 (消息队列)</p>
-<ul>
+<li>预热. 运营人员提前将数据写入redis</li>
+<li>异步去扣减库存 (消息队列)<ul>
 <li>qps=&gt; 每秒查询量</li>
 <li>tps=&gt; 每秒处理的事务量</li>
 <li>pv=&gt; page view </li>
