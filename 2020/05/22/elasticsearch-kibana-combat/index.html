@@ -6,19 +6,30 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://blog.mathjia.net">
-  <title>Tag: JVM | 肆意挥洒の青春 心已远</title>
+  <title>Elasticsearch &amp;&amp; Kibana容器化部署 | 肆意挥洒の青春 心已远</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="北京工业大学12级，现就职于互联网金融保险公司，一直做Java研究开发，此为博客一枚">
-<meta name="keywords" content="前端,js,java,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,分布式,集群,高可用,Developer,Programmer,Coder,Geek">
-<meta property="og:type" content="website">
-<meta property="og:title" content="肆意挥洒の青春 心已远">
-<meta property="og:url" content="http://blog.mathjia.net/tags/JVM/index.html">
+  <meta name="description" content="Elasticsearch搭建步骤1：安装es的镜像 1docker pull elasticsearch:6.7.1 2：在/user/local目录创建一个文件夹ES/config 12345678# 创建文件夹es/configmkdir -p /user/local/ES/config# 进入configcd /user/local/ES/config/# 分别创建三个文件vim es1.">
+<meta name="keywords" content="springboot,elasticsearch,kibana">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Elasticsearch &amp;&amp; Kibana容器化部署">
+<meta property="og:url" content="http://blog.mathjia.net/2020/05/22/elasticsearch-kibana-combat/index.html">
 <meta property="og:site_name" content="肆意挥洒の青春 心已远">
-<meta property="og:description" content="北京工业大学12级，现就职于互联网金融保险公司，一直做Java研究开发，此为博客一枚">
+<meta property="og:description" content="Elasticsearch搭建步骤1：安装es的镜像 1docker pull elasticsearch:6.7.1 2：在/user/local目录创建一个文件夹ES/config 12345678# 创建文件夹es/configmkdir -p /user/local/ES/config# 进入configcd /user/local/ES/config/# 分别创建三个文件vim es1.">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2020/05/22/ypr972ltbwuoMUv.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/22/tklK8XIZc43y9nB.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/22/N8bH1tBJ6OV7ElY.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/22/QdlHjzoetfnsvCS.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/22/yWvJah2NUq4b18d.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/22/evR1DUiJuFSVPch.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/22/WzhxKHyRTbFJafm.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/22/mGZpv9VIwgzDWTO.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/22/mKatWEQLow9qCTZ.png">
+<meta property="og:updated_time" content="2020-05-22T08:54:11.844Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="肆意挥洒の青春 心已远">
-<meta name="twitter:description" content="北京工业大学12级，现就职于互联网金融保险公司，一直做Java研究开发，此为博客一枚">
+<meta name="twitter:title" content="Elasticsearch &amp;&amp; Kibana容器化部署">
+<meta name="twitter:description" content="Elasticsearch搭建步骤1：安装es的镜像 1docker pull elasticsearch:6.7.1 2：在/user/local目录创建一个文件夹ES/config 12345678# 创建文件夹es/configmkdir -p /user/local/ES/config# 进入configcd /user/local/ES/config/# 分别创建三个文件vim es1.">
+<meta name="twitter:image" content="https://i.loli.net/2020/05/22/ypr972ltbwuoMUv.png">
   
     <link rel="alternative" href="/atom.xml" title="肆意挥洒の青春 心已远" type="application/atom+xml">
   
@@ -174,68 +185,315 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-elasticsearch-kibana-combat" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/19/java-classloader/" class="archive-article-date">
-  	<time datetime="2016-05-19T09:18:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-05-19</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/19/java-classloader/">Java ClassLoader 分析整理</a>
+    <h1 class="article-title" itemprop="name">
+      Elasticsearch &amp;&amp; Kibana容器化部署
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/05/22/elasticsearch-kibana-combat/" class="archive-article-date">
+  	<time datetime="2020-05-22T08:01:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Elasticsearch搭建步骤"><a href="#Elasticsearch搭建步骤" class="headerlink" title="Elasticsearch搭建步骤"></a>Elasticsearch搭建步骤</h2><p>1：安装es的镜像</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull elasticsearch:6.7.1</span><br></pre></td></tr></table></figure>
+<p>2：在<code>/user/local</code>目录创建一个文件夹<code>ES/config</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建文件夹es/config</span></span><br><span class="line">mkdir -p /user/<span class="built_in">local</span>/ES/config</span><br><span class="line"><span class="comment"># 进入config</span></span><br><span class="line"><span class="built_in">cd</span> /user/<span class="built_in">local</span>/ES/config/</span><br><span class="line"><span class="comment"># 分别创建三个文件</span></span><br><span class="line">vim es1.yml</span><br><span class="line">vim es2.yml</span><br><span class="line">vim es3.yml</span><br></pre></td></tr></table></figure>
+<p>3：分别三个文件内容如下：</p>
+<p><code>es1.yml</code>解读配置参数意义</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#集群唯一名称，所有节点一致</span></span><br><span class="line">cluster.name: elasticsearch-cluster</span><br><span class="line"><span class="comment">#节点名称</span></span><br><span class="line">node.name: es-node1</span><br><span class="line"><span class="comment">#设置可以访问的ip,默认为0.0.0.0，这里全部设置通过</span></span><br><span class="line">network.host: 0.0.0.0</span><br><span class="line"><span class="comment">#设置其它结点和该结点交互的ip地址</span></span><br><span class="line">network.publish_host: 127.0.0.1</span><br><span class="line"><span class="comment">#设置对外服务的http端口，默认为9200</span></span><br><span class="line">http.port: 9200</span><br><span class="line"><span class="comment">#设置节点之间交互的tcp端口，默认是9300</span></span><br><span class="line">transport.tcp.port: 9300</span><br><span class="line"><span class="comment"># 是否支持跨域，是：true</span></span><br><span class="line">http.cors.enabled: <span class="literal">true</span></span><br><span class="line"><span class="comment"># 表示支持所有域名</span></span><br><span class="line">http.cors.allow-origin: <span class="string">"*"</span></span><br><span class="line"><span class="comment">#配置该结点是否有资格被选举为主结点（候选主结点），为了防止脑裂，配置奇数个候选主结点</span></span><br><span class="line">node.master: <span class="literal">true</span></span><br><span class="line"><span class="comment">#配置该结点是数据结点，用于保存数据</span></span><br><span class="line">node.data: <span class="literal">true</span></span><br><span class="line"><span class="comment">#集群个节点IP地址</span></span><br><span class="line">discovery.zen.ping.unicast.hosts:[<span class="string">"127.0.0.1:9300"</span>,<span class="string">"127.0.0.1:9301"</span>,<span class="string">"127.0.0.1:9302"</span>]</span><br><span class="line"><span class="comment">#自动发现master节点的最小数</span></span><br><span class="line">discovery.zen.minimum_master_nodes: 1</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>es1.yml</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">cluster.name: elasticsearch-cluster</span><br><span class="line">node.name: es-node1</span><br><span class="line">network.host: 0.0.0.0</span><br><span class="line">network.publish_host: 127.0.0.1</span><br><span class="line">http.port: 9200</span><br><span class="line">transport.tcp.port: 9300</span><br><span class="line">http.cors.enabled: <span class="literal">true</span></span><br><span class="line">http.cors.allow-origin: <span class="string">"*"</span></span><br><span class="line">node.master: <span class="literal">true</span></span><br><span class="line">node.data: <span class="literal">true</span></span><br><span class="line">discovery.zen.ping.unicast.hosts:[<span class="string">"127.0.0.1:9300"</span>,<span class="string">"127.0.0.1:9301"</span>,<span class="string">"127.0.0.1:9302"</span>]</span><br><span class="line">discovery.zen.minimum_master_nodes: 1</span><br></pre></td></tr></table></figure>
+<p>es2.yml</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">cluster.name: elasticsearch-cluster</span><br><span class="line">node.name: es-node2</span><br><span class="line">network.host: 0.0.0.0</span><br><span class="line">network.publish_host: 127.0.0.1</span><br><span class="line">http.port: 9201</span><br><span class="line">transport.tcp.port: 9301</span><br><span class="line">http.cors.enabled: <span class="literal">true</span></span><br><span class="line">http.cors.allow-origin: <span class="string">"*"</span></span><br><span class="line">node.master: <span class="literal">true</span></span><br><span class="line">node.data: <span class="literal">true</span></span><br><span class="line">discovery.zen.ping.unicast.hosts:[<span class="string">"127.0.0.1:9300"</span>,<span class="string">"127.0.0.1:9301"</span>,<span class="string">"127.0.0.1:9302"</span>]</span><br><span class="line">discovery.zen.minimum_master_nodes: 1</span><br></pre></td></tr></table></figure>
+<p>es3.yml</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">cluster.name: elasticsearch-cluster</span><br><span class="line">node.name: es-node3</span><br><span class="line">network.host: 0.0.0.0</span><br><span class="line">network.publish_host: 127.0.0.1</span><br><span class="line">http.port: 9202</span><br><span class="line">transport.tcp.port: 9302</span><br><span class="line">http.cors.enabled: <span class="literal">true</span></span><br><span class="line">http.cors.allow-origin: <span class="string">"*"</span></span><br><span class="line">node.master: <span class="literal">true</span></span><br><span class="line">node.data: <span class="literal">true</span></span><br><span class="line">discovery.zen.ping.unicast.hosts:[<span class="string">"127.0.0.1:9300"</span>,<span class="string">"127.0.0.1:9301"</span>,<span class="string">"127.0.0.1:9302"</span>]</span><br><span class="line">discovery.zen.minimum_master_nodes: 1</span><br></pre></td></tr></table></figure>
+<p>4：分别创建三个容器</p>
+<p>查看elasticsearch:6.7.1的容器Id <code>e2667f5db289</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker run -e ES_JAVA_OPTS=<span class="string">"-Xms256m -Xmx256m"</span> -d -p 9200:9200 -p 9300:9300 -v /usr/<span class="built_in">local</span>/es/config/es1.yml:/usr/share/elasticsearch/config/elasticsearch.yml --name ES01 e2667f5db289</span><br><span class="line"></span><br><span class="line">docker run -e ES_JAVA_OPTS=<span class="string">"-Xms256m -Xmx256m"</span> -d -p 9201:9201 -p 9301:9301 -v /usr/<span class="built_in">local</span>/es/config/es2.yml:/usr/share/elasticsearch/config/elasticsearch.yml --name ES02 e2667f5db289</span><br><span class="line"></span><br><span class="line">docker run -e ES_JAVA_OPTS=<span class="string">"-Xms256m -Xmx256m"</span> -d -p 9202:9202 -p 9302:9302 -v /usr/<span class="built_in">local</span>/es/config/es3.yml:/usr/share/elasticsearch/config/elasticsearch.yml --name ES03 e2667f5db289</span><br></pre></td></tr></table></figure>
+<p><strong>如果遇到elasticsearch启动时遇到的错误</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#最大虚拟内存区域vm.max_map_count[65530]太低，请至少增加到[262144]</span></span><br><span class="line">max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在 /etc/sysctl.conf文件最后添加一行，退出系统目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; vim /etc/sysctl.conf</span><br><span class="line">&gt; <span class="comment">#最后一行添加</span></span><br><span class="line">&gt; vm.max_map_count = 655360</span><br><span class="line">&gt; <span class="comment">#并执行命令：</span></span><br><span class="line">&gt; sysctl -p</span><br><span class="line">&gt; <span class="comment">#然后，重新启动elasticsearch，即可启动成功。</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>即可永久修改</p>
+</blockquote>
+<p>重启三个es容器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker restart ES01 ES02 ES03</span><br></pre></td></tr></table></figure>
+<p>访问：<a href="http://127.0.0.1:9200" target="_blank" rel="noopener">http://127.0.0.1:9200</a></p>
+<p>访问：<a href="http://127.0.0.1:9201" target="_blank" rel="noopener">http://127.0.0.1:9201</a></p>
+<p>访问：<a href="http://127.0.0.1:9202" target="_blank" rel="noopener">http://127.0.0.1:9202</a></p>
+<p>查看ES集群是否搭建成功</p>
+<p>访问：<a href="http://127.0.0.1:9200/_cat/nodes?pretty" target="_blank" rel="noopener">http://127.0.0.1:9200/_cat/nodes?pretty</a></p>
+<p><img src="https://i.loli.net/2020/05/22/ypr972ltbwuoMUv.png" alt></p>
+<p>集群配置成功</p>
+<p><img src="https://i.loli.net/2020/05/22/tklK8XIZc43y9nB.png" alt></p>
+<p>5：检查容器三个集群容器是否启动</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2020/05/22/N8bH1tBJ6OV7ElY.png" alt></p>
+<p>安装配置 Elasticsearch-Head 管理界面</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Docker 部署 ElasticSearch-Head</span></span><br><span class="line"><span class="comment"># 为什么要安装ElasticSearch-Head呢，原因是需要有一个管理界面进行查看ElasticSearch相关信息</span></span><br><span class="line"><span class="comment"># 拉取镜像</span></span><br><span class="line">docker pull mobz/elasticsearch-head:5</span><br><span class="line"><span class="comment"># 运行容器</span></span><br><span class="line">docker run -d --name es_admin -p 9100:9100 mobz/elasticsearch-head:5</span><br><span class="line"></span><br><span class="line"><span class="comment"># 等待启动成功</span></span><br></pre></td></tr></table></figure>
+<p>6：然后通过<code>es-head</code>客户端连接</p>
+<p><img src="https://i.loli.net/2020/05/22/QdlHjzoetfnsvCS.png" alt></p>
+<p>在上面的连接中输入任何节点的地址都可以。比如：</p>
+<p><a href="http://127.0.0.1:9200" target="_blank" rel="noopener">http://127.0.0.1:9200</a></p>
+<p><a href="http://127.0.0.1:9201" target="_blank" rel="noopener">http://127.0.0.1:9201</a></p>
+<p><a href="http://127.0.0.1:9202" target="_blank" rel="noopener">http://127.0.0.1:9202</a></p>
+<p><img src="https://i.loli.net/2020/05/22/yWvJah2NUq4b18d.png" alt></p>
+<p><strong>页面数据查询报406错误</strong></p>
+<p><img src="https://i.loli.net/2020/05/22/evR1DUiJuFSVPch.png" alt></p>
+<ul>
+<li>进入head安装目录（cd进 _site/ 目录，编辑vendor.js共2处）</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it es_admin /bin/bash</span><br><span class="line">ls</span><br><span class="line"><span class="built_in">cd</span> _site/</span><br></pre></td></tr></table></figure>
+<p><strong>定位到6886行 :6886</strong></p>
+<blockquote>
+<p>6886行==&gt; contentType: “application/x-www-form-urlencoded”</p>
+<p> 改成 </p>
+<p>contentType: “application/json;charset=UTF-8”</p>
+</blockquote>
+<p><strong>定位到7573行 :7573</strong></p>
+<blockquote>
+<p>7573行==&gt; var inspectData = s.contentType === “application/x-www-form-urlencoded” &amp;&amp;</p>
+<p>改成</p>
+<p>var inspectData = s.contentType === “application/json;charset=UTF-8” &amp;&amp;</p>
+</blockquote>
+<p>如果提示找不到vim方法，参考下面</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 更新源</span></span><br><span class="line">[root@localhost ~]<span class="comment"># apt-get update</span></span><br><span class="line"><span class="comment"># 先更新，防止提示：Unable to locate package vim</span></span><br><span class="line">[root@localhost ~]<span class="comment"># apt-get install vim</span></span><br></pre></td></tr></table></figure>
+<p>安装失败apt-get或安装速度太慢：<br>实际在使用过程中，运行 apt-get update，然后执行 apt-get install vim，下载地址由于是海外地<br>址，下载速度异常慢而且可能中断更新流程，所以做下面配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mv /etc/apt/sources.list /etc/apt/sources.list.bak</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"deb http://mirrors.163.com/debian/ jessie main non-free contrib"</span> &gt;&gt;</span><br><span class="line">/etc/apt/sources.list</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"deb http://mirrors.163.com/debian/ jessie-proposed-updates main non-</span></span><br><span class="line"><span class="string">free contrib"</span> &gt;&gt;/etc/apt/sources.list</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"deb-src http://mirrors.163.com/debian/ jessie main non-free contrib"</span></span><br><span class="line">&gt;&gt;/etc/apt/sources.list</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"deb-src http://mirrors.163.com/debian/ jessie-proposed-updates main</span></span><br><span class="line"><span class="string">non-free contrib"</span> &gt;&gt;/etc/apt/sources.list</span><br></pre></td></tr></table></figure>
+<p>重启容器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker restart es_admin</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2020/05/22/WzhxKHyRTbFJafm.png" alt></p>
+<h2 id="Kibana图形化管理ES"><a href="#Kibana图形化管理ES" class="headerlink" title="Kibana图形化管理ES"></a>Kibana图形化管理ES</h2><p>1：下载Kibana镜像</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载Kibana镜像</span></span><br><span class="line">docker pull kibana:6.7.1</span><br><span class="line"><span class="comment"># 查看镜像</span></span><br><span class="line">docker images</span><br></pre></td></tr></table></figure>
+<p>2：编辑kibana.yml配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/ES</span><br><span class="line">mkdir -p data/elk/</span><br></pre></td></tr></table></figure>
+<p>kibana.yml配置文件放在宿主机 /data/elk/目录下，内容如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server.name: kibana</span><br><span class="line">server.host: <span class="string">"0"</span></span><br><span class="line">elasticsearch.hosts: [<span class="string">"http://127.0.0.1:9200"</span>,<span class="string">"http://127.0.0.1:9201"</span>,<span class="string">"http://127.0.0.1:92</span></span><br><span class="line"><span class="string">02"</span>]</span><br><span class="line">xpack.monitoring.ui.container.elasticsearch.enabled: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>3：运行Kibana</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --restart=always --<span class="built_in">log</span>-driver json-file --<span class="built_in">log</span>-opt max-size=100m --<span class="built_in">log</span>-opt max-file=2 --name xinyar-kibana -p 5601:5601 -v /usr/<span class="built_in">local</span>/ES/data/elk/kibana.yml:/usr/share/kibana/config/kibana.yml kibana:6.8.8</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看容器启动状态</span></span><br><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+<p>4：访问Kibana</p>
+<p>访问 <a href="http://127.0.0.1:5601" target="_blank" rel="noopener">http://127.0.0.1:5601</a> (启动可能会较慢，如失败等几秒再尝试刷新一下)</p>
+<p><img src="https://i.loli.net/2020/05/22/mGZpv9VIwgzDWTO.png" alt></p>
+<p><img src="https://i.loli.net/2020/05/22/mKatWEQLow9qCTZ.png" alt></p>
+<h2 id="Springboot-amp-amp-Elasticsearch"><a href="#Springboot-amp-amp-Elasticsearch" class="headerlink" title="Springboot &amp;&amp; Elasticsearch"></a>Springboot &amp;&amp; Elasticsearch</h2><p>github地址：<a href="https://github.com/allen001/es-search" target="_blank" rel="noopener">https://github.com/allen001/es-search</a></p>
+<p>修改application.properties中es连接ip地址</p>
+<h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><ul>
+<li><a href="https://blog.csdn.net/qq_25012687/article/details/98728578" target="_blank" rel="noopener">ElasticSearch6.5.4&lt;一&gt; 单机部署以及简单尝试</a></li>
+<li><a href="https://blog.csdn.net/qq_25012687/article/details/100825774" target="_blank" rel="noopener">ElasticSearch6.5.4&lt;二&gt; 几个重要概念以及常用搜索</a></li>
+<li><a href="https://blog.csdn.net/qq_25012687/article/details/100851367" target="_blank" rel="noopener">ElasticSearch6.5.4&lt;三&gt; 中文以及拼音的操作</a></li>
+<li><a href="https://blog.csdn.net/qq_25012687/article/details/100877285" target="_blank" rel="noopener">ElasticSearch6.5.4&lt;四&gt; Java使用ES并实战搜索</a></li>
+<li><a href="https://blog.csdn.net/qq_25012687/article/details/100915731" target="_blank" rel="noopener">ElasticSearch6.5.4&lt;五&gt; 集群操作</a></li>
+<li><a href="https://blog.csdn.net/qq_25012687/article/details/100972100" target="_blank" rel="noopener">ElasticSearch6.5.4&lt;六&gt; ELK</a></li>
+<li><a href="https://blog.csdn.net/qq_25012687/article/details/101012234" target="_blank" rel="noopener">ElasticSearch6.5.4&lt;七&gt; ES分布式原理以及工作原理</a></li>
+<li><p><a href="https://blog.csdn.net/qq_25012687/article/details/101012305" target="_blank" rel="noopener">ElasticSearch6.5.4&lt;八&gt; ES常见问题</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/qq_25012687/article/details/101050412" target="_blank" rel="noopener">SpringBoot集成ElasticSearch的几种方式</a></p>
+</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/image/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/image/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">springboot</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ClassLoader</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">elasticsearch</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JVM</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">kibana</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//qr.liantu.com/api.php?text=http://blog.mathjia.net/2020/05/22/elasticsearch-kibana-combat/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/05/22/elasticsearch-docker-combat/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Elasticsearch搭建步骤"><span class="toc-number">1.</span> <span class="toc-text">Elasticsearch搭建步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kibana图形化管理ES"><span class="toc-number">2.</span> <span class="toc-text">Kibana图形化管理ES</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Springboot-amp-amp-Elasticsearch"><span class="toc-number">3.</span> <span class="toc-text">Springboot &amp;&amp; Elasticsearch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#资料"><span class="toc-number">4.</span> <span class="toc-text">资料</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="/js/md5.js"></script>
+<script>
+var gitalk = new Gitalk({
+  id: md5(location.pathname),
+  clientID: '2360b29b462f37a66d43',
+  clientSecret: '02475a757ede4af430aaa33eeef99c652d4ab1da',
+  repo: 'allen001.github.io',
+  owner: 'allen001',
+  admin: 'allen001'
+})
+
+gitalk.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -258,9 +516,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
