@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/05/22/Y6IcksTKeD91Hg5.png">
 <meta property="og:image" content="https://i.loli.net/2020/05/22/69COYGVhu8rRSAt.png">
 <meta property="og:image" content="https://i.loli.net/2020/05/22/NAEI4j63i5l2WBD.png">
-<meta property="og:updated_time" content="2020-05-26T10:20:45.607Z">
+<meta property="og:updated_time" content="2020-05-26T10:24:23.025Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="简述秒杀系统">
 <meta name="twitter:description" content="系统特征1: 时间极短2: 瞬间请求量非常大 活动注意点1: 不能超卖（直接经济损失，平台信誉受损）2: 防黑产,黄牛 (阿里月饼门) , 机器的请求速度比人的手速快太多了3: 瞬间爆发的高流量   典型的读多写少的场景（cache 缓存) 页面静态化 ,利用cdn服务器缓存前端文件 按钮置灰3秒. (利用风控规则过滤掉非法用户) 接口层可以做开关限流( 一旦抢购结束,则直接返回失败) 堆机器,">
@@ -237,7 +237,7 @@ var _hmt = _hmt || [];
 <li>持久性: 持久化数据 AOF (append only file) ,RDB (redis database)</li>
 <li>一致性: 并不支持严格的一致性</li>
 <li>隔离性: 天然支持，单线程程序</li>
-<li>原子性：2.6版本以后的redis支持lua脚本来间接达到原子性<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> watch;</span><br><span class="line"> redis.set(a,<span class="number">1</span>);</span><br><span class="line"> redis.get(a);</span><br><span class="line"> redis.set(b); </span><br><span class="line"> redis.set(a,<span class="number">3</span>);</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<li>原子性：2.6版本以后的redis支持lua脚本来间接达到原子性<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">watch;</span><br><span class="line">redis.set(a,<span class="number">1</span>);</span><br><span class="line">redis.get(a);</span><br><span class="line">redis.set(b); </span><br><span class="line">redis.set(a,<span class="number">3</span>);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </blockquote>
@@ -271,10 +271,10 @@ var _hmt = _hmt || [];
 </ul>
 </blockquote>
 <h2 id="实战Coding"><a href="#实战Coding" class="headerlink" title="实战Coding"></a>实战Coding</h2><h3 id="使用docker安装redis"><a href="#使用docker安装redis" class="headerlink" title="使用docker安装redis"></a>使用docker安装redis</h3><p>1: <code>docker pull redis</code><br>2: 配置好redis的配置和data目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># Redis默认不是以守护进程的方式运行，可以通过该配置项修改，使用yes启用守护进程</span><br><span class="line">daemonize no</span><br><span class="line"></span><br><span class="line"># 指定Redis监听端口，默认端口为6379</span><br><span class="line">port 6379</span><br><span class="line"></span><br><span class="line"># 绑定的主机地址，不要绑定容器的本地127.0.0.1地址，因为这样就无法在容器外部访问</span><br><span class="line">bind 0.0.0.0</span><br><span class="line"></span><br><span class="line"># 持久化</span><br><span class="line">appendonly yes</span><br></pre></td></tr></table></figure></p>
-<p>3: 启动redis<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 6379:6379 </span><br><span class="line">	--name redis \</span><br><span class="line">	-v Users/aya/docker/redis/conf/redis.conf:/etc/redis/redis.conf \</span><br><span class="line">	-v Users/aya/docker/redis/data:/data \</span><br><span class="line">	-d redis redis-server /etc/redis/redis.conf</span><br></pre></td></tr></table></figure></p>
+<p>3: 启动redis<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 6379:6379 </span><br><span class="line"> --name redis \</span><br><span class="line"> -v Users/aya/docker/redis/conf/redis.conf:/etc/redis/redis.conf \</span><br><span class="line"> -v Users/aya/docker/redis/data:/data \</span><br><span class="line"> -d redis redis-server /etc/redis/redis.conf</span><br></pre></td></tr></table></figure></p>
 <p>4: 测试redis<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it redis redis-cli</span><br></pre></td></tr></table></figure></p>
 <h3 id="使用docker安装mysql"><a href="#使用docker安装mysql" class="headerlink" title="使用docker安装mysql"></a>使用docker安装mysql</h3><p>1: <code>docker pull mysql</code><br>2: 配置mysql<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">user=mysql</span><br><span class="line">character-set-server=utf8</span><br><span class="line">default_authentication_plugin=mysql_native_password</span><br><span class="line">secure_file_priv=/var/lib/mysql</span><br><span class="line">expire_logs_days=7</span><br><span class="line">sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION</span><br><span class="line">max_connections=1000</span><br><span class="line"></span><br><span class="line">[client]</span><br><span class="line">default-character-set=utf8</span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line">default-character-set=utf8</span><br></pre></td></tr></table></figure></p>
-<p>3: 启动mysql<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">docker run --restart=always </span><br><span class="line">	--privileged=<span class="literal">true</span> \</span><br><span class="line">	-d \</span><br><span class="line">	-v /Users/aya/docker/mysql/data/:/var/lib/mysql \</span><br><span class="line">	-v /Users/aya/docker/mysql/conf.d:/etc/mysql/conf.d \</span><br><span class="line">	-v /Users/aya/docker/mysql/conf/my.cnf:/etc/mysql/my.cnf \</span><br><span class="line">	-p 3306:3306 \</span><br><span class="line">	--name mysql \</span><br><span class="line">	-e MYSQL_ROOT_PASSWORD=123456 \</span><br><span class="line">	mysql</span><br></pre></td></tr></table></figure></p>
+<p>3: 启动mysql<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">docker run --restart=always </span><br><span class="line"> --privileged=<span class="literal">true</span> \</span><br><span class="line"> -d \</span><br><span class="line"> -v /Users/aya/docker/mysql/data/:/var/lib/mysql \</span><br><span class="line"> -v /Users/aya/docker/mysql/conf.d:/etc/mysql/conf.d \</span><br><span class="line"> -v /Users/aya/docker/mysql/conf/my.cnf:/etc/mysql/my.cnf \</span><br><span class="line"> -p 3306:3306 \</span><br><span class="line"> --name mysql \</span><br><span class="line"> -e MYSQL_ROOT_PASSWORD=123456 \</span><br><span class="line"> mysql</span><br></pre></td></tr></table></figure></p>
 <p>4: 测试</p>
 <h3 id="初步的减库存逻辑"><a href="#初步的减库存逻辑" class="headerlink" title="初步的减库存逻辑"></a>初步的减库存逻辑</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/seckill/&#123;id&#125;"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">secKill</span><span class="params">(@PathVariable <span class="keyword">long</span> id)</span> </span>&#123;</span><br><span class="line">       Product product = service.select(id);</span><br><span class="line">       <span class="keyword">int</span> stock = product.getStock();</span><br><span class="line">       <span class="keyword">if</span> (stock &gt; <span class="number">0</span>) &#123;</span><br><span class="line">           <span class="keyword">if</span> (service.secKill(id) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">               <span class="keyword">return</span> <span class="string">"秒杀成功"</span>;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="string">"秒杀失败"</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
       
@@ -576,18 +576,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">秒杀</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">springboot</a>
               </li>
              
@@ -597,6 +585,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">秒杀</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
