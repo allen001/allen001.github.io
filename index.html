@@ -176,6 +176,111 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-1： redis (单线程,单核的内存数据集)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1： redis (单线程,单核的内存数据集) </p>
+<ul>
+<li><p>持久性: 持久化数据 AOF (append only file) ,RDB (redis database)</p>
+<ul>
+<li><p>一致性: 并不支持严格的一致性</p>
+</li>
+<li><p>隔离性 : 天然支持的 ,单线程程序</p>
+</li>
+<li><p>原子性: 2.6版本以后的redis支持lua脚本来间接达到原子性.</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">watch;</span><br><span class="line">redis.set(a,<span class="number">1</span>);</span><br><span class="line">redis.get(a);</span><br><span class="line">redis.set(b); </span><br><span class="line">redis.set(a,<span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>2：memcached</p>
+<ul>
+<li><p>只支持string</p>
+</li>
+<li><p>不支持持久化,通过第三方的插件来间接持久化</p>
+</li>
+<li><p>不支持集群方案, 是通过hash算法来实现集群</p>
+</li>
+<li><p>多线程的，速度比redis快 (线程安全)</p>
+</li>
+</ul>
+<p>3：本地缓存 ehcache, guava cache,spring cache</p>
+<ul>
+<li>速度最快,但是单机的</li>
+</ul>
+<h2 id="JMeter测试样本"><a href="#JMeter测试样本" class="headerlink" title="JMeter测试样本"></a>JMeter测试样本</h2><p><img src="https://i.loli.net/2020/05/22/Y6IcksTKeD91Hg5.png" alt></p>
+<p>样本: 请求总数</p>
+<p>平均值: 平均响应时间(毫秒)</p>
+<p>中位数: 大多数的响应时间</p>
+<p>吞吐量 :tps</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/seckill/&#123;id&#125;"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">secKill</span><span class="params">(@PathVariable <span class="keyword">long</span> id)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">synchronized</span> (lock) &#123;</span><br><span class="line">           Product product = service.select(id);</span><br><span class="line">           <span class="keyword">int</span> stock = product.getStock(); <span class="comment">//过期的数据</span></span><br><span class="line">           <span class="keyword">if</span> (stock &gt; <span class="number">0</span>) &#123;</span><br><span class="line">               <span class="keyword">if</span> (service.secKill(id) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                   <span class="keyword">return</span> <span class="string">"秒杀成功"</span>;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">return</span> <span class="string">"秒杀失败"</span>;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2020/05/22/69COYGVhu8rRSAt.png" alt></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> product <span class="keyword">set</span> stock=stock<span class="number">-1</span> <span class="keyword">where</span> <span class="keyword">id</span> =<span class="comment">#&#123;id&#125; and stock&gt;0</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2020/05/22/NAEI4j63i5l2WBD.png" alt></p>
+<h2 id="innodb默认的行级锁"><a href="#innodb默认的行级锁" class="headerlink" title="innodb默认的行级锁"></a>innodb默认的行级锁</h2><p>vip 秒杀qps: 200w/s</p>
+<h3 id="这样写有什么问题"><a href="#这样写有什么问题" class="headerlink" title="这样写有什么问题?"></a>这样写有什么问题?</h3><ol>
+<li>所有的请求都会打到数据库, 数据库压力很大, 和我们的原则: 把请求拦截到上层相悖</li>
+<li>虽然说mysql执行很快，但是由于行级锁的存在,每个请求还是会等很久.</li>
+</ol>
+<p>qps ： query per second； 查询是不需要事务的.</p>
+<p>tps ： transaction.   insert ,update, delete. </p>
+<h2 id="实战Coding"><a href="#实战Coding" class="headerlink" title="实战Coding"></a>实战Coding</h2><h3 id="使用docker安装redis"><a href="#使用docker安装redis" class="headerlink" title="使用docker安装redis"></a>使用docker安装redis</h3><p>1：<code>docker pull redis</code></p>
+<p>2：配置好redis的配置和data目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># Redis默认不是以守护进程的方式运行，可以通过该配置项修改，使用yes启用守护进程</span><br><span class="line">daemonize no</span><br><span class="line"></span><br><span class="line"># 指定Redis监听端口，默认端口为6379</span><br><span class="line">port 6379</span><br><span class="line"></span><br><span class="line"># 绑定的主机地址，不要绑定容器的本地127.0.0.1地址，因为这样就无法在容器外部访问</span><br><span class="line">bind 0.0.0.0</span><br><span class="line"></span><br><span class="line"># 持久化</span><br><span class="line">appendonly yes</span><br></pre></td></tr></table></figure>
+<p>3：启动redis</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 6379:6379 --name redis -v Users/aya/docker/redis/conf/redis.conf:/etc/redis/redis.conf -v Users/aya/docker/redis/data:/data -d redis redis-server /etc/redis/redis.conf</span><br></pre></td></tr></table></figure>
+<p>4：测试redis</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it redis redis-cli</span><br></pre></td></tr></table></figure>
+<h3 id="使用docker安装mysql"><a href="#使用docker安装mysql" class="headerlink" title="使用docker安装mysql"></a>使用docker安装mysql</h3><p>1：<code>docker pull mysql</code></p>
+<p>2：配置mysql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">user=mysql</span><br><span class="line">character-set-server=utf8</span><br><span class="line">default_authentication_plugin=mysql_native_password</span><br><span class="line">secure_file_priv=/var/lib/mysql</span><br><span class="line">expire_logs_days=7</span><br><span class="line">sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION</span><br><span class="line">max_connections=1000</span><br><span class="line"></span><br><span class="line">[client]</span><br><span class="line">default-character-set=utf8</span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line">default-character-set=utf8</span><br></pre></td></tr></table></figure>
+<p>3：启动mysql</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --restart=always --privileged=<span class="literal">true</span> -d -v /Users/aya/docker/mysql/data/:/var/lib/mysql -v /Users/aya/docker/mysql/conf.d:/etc/mysql/conf.d -v /Users/aya/docker/mysql/conf/my.cnf:/etc/mysql/my.cnf -p 3306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=123456 mysql</span><br></pre></td></tr></table></figure>
+<p>4：测试</p>
+<h3 id="初步的减库存逻辑"><a href="#初步的减库存逻辑" class="headerlink" title="初步的减库存逻辑"></a>初步的减库存逻辑</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/seckill/&#123;id&#125;"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">secKill</span><span class="params">(@PathVariable <span class="keyword">long</span> id)</span> </span>&#123;</span><br><span class="line">    Product product = service.select(id);</span><br><span class="line">    <span class="keyword">int</span> stock = product.getStock();</span><br><span class="line">    <span class="keyword">if</span> (stock &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (service.secKill(id) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"秒杀成功"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"秒杀失败"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/22/1： redis (单线程,单核的内存数据集)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-seckill-message" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -231,9 +336,47 @@ var _hmt = _hmt || [];
 <ul>
 <li>持久性: 持久化数据 AOF (append only file) ,RDB (redis database)</li>
 <li>一致性: 并不支持严格的一致性</li>
+<li>隔离性: 天然支持，单线程程序</li>
+<li>原子性：2.6版本以后的redis支持lua脚本来间接达到原子性<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; watch;</span><br><span class="line">&gt; redis.set(a,<span class="number">1</span>);</span><br><span class="line">&gt; redis.get(a);</span><br><span class="line">&gt; redis.set(b); </span><br><span class="line">&gt; redis.set(a,<span class="number">3</span>);</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 </blockquote>
-
+<p>2: memcached</p>
+<blockquote>
+<ul>
+<li>只支持string</li>
+<li>不支持持久化,通过第三方的插件来间接持久化</li>
+<li>不支持集群方案, 是通过hash算法来实现集群</li>
+<li>多线程的，速度比redis快 (线程安全)</li>
+</ul>
+</blockquote>
+<p>3: 本地缓存 ehcache, guava cache,spring cache</p>
+<blockquote>
+<ul>
+<li>速度最快,但是单机的</li>
+</ul>
+</blockquote>
+<h2 id="JMeter测试样本"><a href="#JMeter测试样本" class="headerlink" title="JMeter测试样本"></a>JMeter测试样本</h2><p><img src="https://i.loli.net/2020/05/22/Y6IcksTKeD91Hg5.png" alt></p>
+<p>样本: 请求总数<br>平均值: 平均响应时间(毫秒)<br>中位数: 大多数的响应时间<br>吞吐量 :tps</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/seckill/&#123;id&#125;"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">secKill</span><span class="params">(@PathVariable <span class="keyword">long</span> id)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">synchronized</span> (lock) &#123;</span><br><span class="line">           Product product = service.select(id);</span><br><span class="line">           <span class="keyword">int</span> stock = product.getStock(); <span class="comment">//过期的数据</span></span><br><span class="line">           <span class="keyword">if</span> (stock &gt; <span class="number">0</span>) &#123;</span><br><span class="line">               <span class="keyword">if</span> (service.secKill(id) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                   <span class="keyword">return</span> <span class="string">"秒杀成功"</span>;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">return</span> <span class="string">"秒杀失败"</span>;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2020/05/22/69COYGVhu8rRSAt.png" alt><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> product <span class="keyword">set</span> stock=stock<span class="number">-1</span> <span class="keyword">where</span> <span class="keyword">id</span> =<span class="comment">#&#123;id&#125; and stock&gt;0</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="https://i.loli.net/2020/05/22/NAEI4j63i5l2WBD.png" alt></p>
+<h2 id="innodb默认的行级锁"><a href="#innodb默认的行级锁" class="headerlink" title="innodb默认的行级锁"></a>innodb默认的行级锁</h2><p>vip 秒杀qps: 200w/s</p>
+<h3 id="这样写有什么问题"><a href="#这样写有什么问题" class="headerlink" title="这样写有什么问题?"></a>这样写有什么问题?</h3><blockquote>
+<ul>
+<li>所有的请求都会打到数据库, 数据库压力很大, 和我们的原则: 把请求拦截到上层相悖</li>
+<li>虽然说mysql执行很快，但是由于行级锁的存在,每个请求还是会等很久</li>
+<li>qps:  query per second； 查询是不需要事务的</li>
+<li>tps:  transaction,  insert, update, delete</li>
+</ul>
+</blockquote>
+<h2 id="实战Coding"><a href="#实战Coding" class="headerlink" title="实战Coding"></a>实战Coding</h2><h3 id="使用docker安装redis"><a href="#使用docker安装redis" class="headerlink" title="使用docker安装redis"></a>使用docker安装redis</h3><p>1: <code>docker pull redis</code><br>2: 配置好redis的配置和data目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># Redis默认不是以守护进程的方式运行，可以通过该配置项修改，使用yes启用守护进程</span><br><span class="line">daemonize no</span><br><span class="line"></span><br><span class="line"># 指定Redis监听端口，默认端口为6379</span><br><span class="line">port 6379</span><br><span class="line"></span><br><span class="line"># 绑定的主机地址，不要绑定容器的本地127.0.0.1地址，因为这样就无法在容器外部访问</span><br><span class="line">bind 0.0.0.0</span><br><span class="line"></span><br><span class="line"># 持久化</span><br><span class="line">appendonly yes</span><br></pre></td></tr></table></figure></p>
+<p>3: 启动redis<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 6379:6379 --name redis -v Users/aya/docker/redis/conf/redis.conf:/etc/redis/redis.conf -v Users/aya/docker/redis/data:/data -d redis redis-server /etc/redis/redis.conf</span><br></pre></td></tr></table></figure></p>
+<p>4: 测试redis<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it redis redis-cli</span><br></pre></td></tr></table></figure></p>
+<h3 id="使用docker安装mysql"><a href="#使用docker安装mysql" class="headerlink" title="使用docker安装mysql"></a>使用docker安装mysql</h3><p>1: <code>docker pull mysql</code><br>2: 配置mysql<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">user=mysql</span><br><span class="line">character-set-server=utf8</span><br><span class="line">default_authentication_plugin=mysql_native_password</span><br><span class="line">secure_file_priv=/var/lib/mysql</span><br><span class="line">expire_logs_days=7</span><br><span class="line">sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION</span><br><span class="line">max_connections=1000</span><br><span class="line"></span><br><span class="line">[client]</span><br><span class="line">default-character-set=utf8</span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line">default-character-set=utf8</span><br></pre></td></tr></table></figure></p>
+<p>3: 启动mysql<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --restart=always --privileged=<span class="literal">true</span> -d -v /Users/aya/docker/mysql/data/:/var/lib/mysql -v /Users/aya/docker/mysql/conf.d:/etc/mysql/conf.d -v /Users/aya/docker/mysql/conf/my.cnf:/etc/mysql/my.cnf -p 3306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=123456 mysql</span><br></pre></td></tr></table></figure></p>
+<p>4: 测试</p>
+<h3 id="初步的减库存逻辑"><a href="#初步的减库存逻辑" class="headerlink" title="初步的减库存逻辑"></a>初步的减库存逻辑</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/seckill/&#123;id&#125;"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">secKill</span><span class="params">(@PathVariable <span class="keyword">long</span> id)</span> </span>&#123;</span><br><span class="line">       Product product = service.select(id);</span><br><span class="line">       <span class="keyword">int</span> stock = product.getStock();</span><br><span class="line">       <span class="keyword">if</span> (stock &gt; <span class="number">0</span>) &#123;</span><br><span class="line">           <span class="keyword">if</span> (service.secKill(id) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">               <span class="keyword">return</span> <span class="string">"秒杀成功"</span>;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="string">"秒杀失败"</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -1002,87 +1145,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-fornt-mcdull" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/09/fornt-mcdull/">一个比较炫的前端特效，可以用来给Ta惊喜</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/09/fornt-mcdull/" class="archive-article-date">
-  	<time datetime="2017-06-09T10:40:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>用代码造就出一个迷幻世界送给Ta,也是一份惊喜。今天给大家带来一份简单但是也很有意义的特效，如果你是非程序员，也能改成你想要的效果。</p>
-<p>1.首先来看一个剪辑的gif图。是时间倒计时<br><img src="http://p1.pstatp.com/large/26e30003416e4141a1a4" alt><br>首先说明一下，因为gif动态图的关系，帧数没有处理好，所以看起来有点卡顿，实际效果都是很流畅的。倒计时可以自由设置，这里只是举了个例子设置三秒，也可以设置更久，或者干脆取消倒计时都是可以。另外，倒计时一开始的矩形，我们也可以换成圆形，后面我会具体在代码中说明改哪里。</p>
-        
-          <a class="article-more-a" href="/2017/06/09/fornt-mcdull/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/09/fornt-mcdull/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1196,10 +1258,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">秒杀</a>
               </li>
              
@@ -1209,6 +1267,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1236,6 +1298,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">elasticsearch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">kibana</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">devops</a>
               </li>
              
@@ -1245,14 +1315,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">elasticsearch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">kibana</a>
               </li>
              
               <li class="article-tag-list-item">
