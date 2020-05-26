@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/05/22/Y6IcksTKeD91Hg5.png">
 <meta property="og:image" content="https://i.loli.net/2020/05/22/69COYGVhu8rRSAt.png">
 <meta property="og:image" content="https://i.loli.net/2020/05/22/NAEI4j63i5l2WBD.png">
-<meta property="og:updated_time" content="2020-05-26T10:11:59.705Z">
+<meta property="og:updated_time" content="2020-05-26T10:15:43.651Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="简述秒杀系统">
 <meta name="twitter:description" content="系统特征1: 时间极短2: 瞬间请求量非常大 活动注意点1: 不能超卖（直接经济损失，平台信誉受损）2: 防黑产,黄牛 (阿里月饼门) , 机器的请求速度比人的手速快太多了3: 瞬间爆发的高流量   典型的读多写少的场景（cache 缓存) 页面静态化 ,利用cdn服务器缓存前端文件 按钮置灰3秒. (利用风控规则过滤掉非法用户) 接口层可以做开关限流( 一旦抢购结束,则直接返回失败) 堆机器,">
@@ -230,6 +230,7 @@ var _hmt = _hmt || [];
 </ul>
 </blockquote>
 <h2 id="系统业务图"><a href="#系统业务图" class="headerlink" title="系统业务图"></a>系统业务图</h2><p><img src="https://i.loli.net/2020/05/22/eQkhKmd5fwHztOl.png" alt="秒杀系统业务图"></p>
+<a id="more"></a>
 <h2 id="技术选项cache-nosql-db"><a href="#技术选项cache-nosql-db" class="headerlink" title="技术选项cache,nosql,db"></a>技术选项cache,nosql,db</h2><p><strong>缓存穿透, 缓存雪崩</strong><br>db: 必须具备ACID的特性,才能算得上数据库<br>1: redis (单线程,单核的内存数据集) </p>
 <blockquote>
 <ul>
@@ -396,15 +397,6 @@ var _hmt = _hmt || [];
 
   
 <nav id="article-nav">
-  
-    <a href="/2020/05/22/1： redis (单线程,单核的内存数据集)/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          (no title)
-        
-      </div>
-    </a>
   
   
     <a href="/2020/05/22/elasticsearch-kibana-combat/" id="article-nav-older" class="article-nav-link-wrap">
